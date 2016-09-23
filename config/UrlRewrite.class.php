@@ -29,7 +29,6 @@ class UrlRewrite extends Model
 
             //parametros
             $this->parametros = $this->url;
-
         } else {
             $this->pagina = "home";
         }
@@ -55,20 +54,16 @@ class UrlRewrite extends Model
                     $this->base = BASE_DIR;
                     $baseView = $this->base . "/view/";
 
-                    foreach ($rotas as $rota) {
-
-                        if ($rota == $this->pagina) {
-
-                            if (file_exists($baseView . $rota . ".php")) {
-                                include_once $baseView . $rota . ".php";
-                            }
-                            else{
-                                exit("Arquivo ou diretório inexistente");
-                            }
-
+                    if (in_array($this->pagina,$rotas)) {
+                        if (file_exists($baseView . array_search($this->pagina,$rotas) . ".php")) {
+                            include_once $baseView . array_search($this->pagina,$rotas) . ".php";
+                        }
+                        else{
+                            exit("Arquivo ou diretório inexistente");
                         }
 
-
+                    } else {
+                        exit("Erro 404");
                     }
 
                     break;
