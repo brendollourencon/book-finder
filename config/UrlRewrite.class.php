@@ -1,7 +1,88 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: brendol
- * Date: 20/09/16
- * Time: 21:38
- */
+
+
+class UrlRewrite extends Model
+{
+
+    private $url;
+    private $pagina;
+    private $parametros;
+    private $base;
+
+    public function __construct()
+    {
+        //loja/categoria/criancas
+        //loja/produtos/harry-potter/123
+        //
+
+
+        //$this->url = (isset($_GET['url']) && $_GET['url']) ? $_GET['url'] : false;
+        $this->url = $_GET['url'];
+
+        if ($this->url != null) {
+
+            $this->url = explode("/", $this->url);
+
+            //pagina
+            $this->pagina = $this->url[0];
+            unset($this->url[0]);
+
+            //parametros
+            $this->parametros = $this->url;
+
+        } else {
+            $this->pagina = "home";
+        }
+
+
+    }
+
+    public function rewrite($rotas = null)
+    {
+
+        if ($rotas != "") {
+
+            switch ($this->pagina) {
+
+                case "painel":
+                    //regras aqui
+                    break;
+                case "produtos":
+                    // regras aqui
+                    break;
+                default:
+
+                    $this->base = BASE_DIR;
+                    $baseView = $this->base . "/view/";
+
+                    foreach ($rotas as $rota) {
+
+                        if ($rota == $this->pagina) {
+
+                            if (file_exists($baseView . $rota . ".php")) {
+                                include_once $baseView . $rota . ".php";
+                            }
+                            else{
+                                exit("Arquivo ou diretório inexistente");
+                            }
+
+                        }
+
+
+                    }
+
+                    break;
+
+
+            }
+
+
+        } else {
+            exit("Página em construção");
+        }
+
+
+    }
+
+
+}

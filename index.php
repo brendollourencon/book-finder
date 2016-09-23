@@ -1,7 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: brendol
- * Date: 20/09/16
- * Time: 21:33
- */
+
+// dependencias
+
+include_once "config/Rotas.php";
+include_once "config/Init.php";
+include_once "config/Autoload.php";
+include_once "config/UrlRewrite.class.php";
+
+$urlRewrite = new UrlRewrite();
+$urlRewrite->rewrite($rotas);
