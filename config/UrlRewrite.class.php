@@ -56,6 +56,7 @@ class UrlRewrite extends Model
 
                     if (in_array($this->pagina,$rotas)) {
                         if (file_exists($baseView . array_search($this->pagina,$rotas) . ".php")) {
+                            $parametros = $this->parametros;
                             include_once $baseView . array_search($this->pagina,$rotas) . ".php";
                         }
                         else{
