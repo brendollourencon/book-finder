@@ -68,8 +68,6 @@ class UrlRewrite extends Model
                     }
 
                     break;
-
-
             }
 
 
