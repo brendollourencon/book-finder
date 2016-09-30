@@ -3,5 +3,6 @@
 $rotas = [
     "produtos" => "produto",
     "home" => "home",
-    "contato" => "fale-conosco"
+    "contato" => "fale-conosco",
+    "testes" => "testes"
 ];
