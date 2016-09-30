@@ -4,7 +4,6 @@
 class Db extends Model
 {
 
-
     private static $pdo;
     private $type;
     private $server;
