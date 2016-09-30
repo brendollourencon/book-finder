@@ -21,6 +21,17 @@
             $(this).parent().addClass('active');
         });
 
+        $('.input-container .control').on('focusout', function () {
+            var field = $(this),
+                label = field.parent().find('label');
+
+            if (field.val())
+                label.addClass('keep-float');
+            else
+                label.removeClass('keep-float');
+
+        });
+
 
     });
 })();
