@@ -5,3 +5,5 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     #mandando todas as solicitações para index
     RewriteRule ^(.*)$ index.php?url=$1 [QSA]
+
+    Options -Indexes

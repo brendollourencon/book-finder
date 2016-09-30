@@ -2,7 +2,7 @@
 
 // Constantes
 define("BASE_DIR", getcwd());
-define("SITE_URL", "http://localhost/plataforma");
+define("SITE_URL", "http://localhost/book-finder");
 define("SITE_CSS", SITE_URL."/public/css");
 define("SITE_JS", SITE_URL."/public/js");
 define("SITE_IMAGENS", SITE_URL."/public/imagens");
