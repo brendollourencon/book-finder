@@ -344,8 +344,26 @@
 
 .input-container .control:focus ~ label {
     color: #616161;
+}
+
+.input-container .control:focus ~ label,
+.input-container label.keep-float {
     top: 0;
     font-size: 12px;
+}
+
+.input-container.error .control {
+    border-color: #F44336;
+}
+
+.input-container.error label,
+.input-container.error label.keep-float,
+.input-container.error .control:focus ~ label {
+    color: #F44336;
+}
+
+.input-container.error .line {
+    background-color: #F44336;
 }
 
 /*  HEADER  */
