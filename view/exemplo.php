@@ -9,7 +9,9 @@ $js = ['scri','scri2'];
 include_once "header.php";
 
 ?>
-pagina de teste
+<div>
+    adadsd
+</div>
 <?php
 include_once "footer.php";
 ?>

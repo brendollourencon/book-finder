@@ -3,13 +3,14 @@
 
 $title="Titulo de teste";
 
-$css = ['exemplo','exemplo2'];
-$js = ['scri','scri2'];
+$css = [];
+$js = [];
 
-include_once "header.php";
 
-?>
-pagina de teste
-<?php
-include_once "footer.php";
+
+
+
+$autenticacao = new Auth();
+$teste = $autenticacao->verifyAuth('brendol.lourencon@gmail.com','aa123');
+
 ?>

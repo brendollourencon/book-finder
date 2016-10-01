@@ -6,14 +6,12 @@ class Model{
 
     public function __call($name, $arguments)
     {
-        $name = sanitizeString($name);
         $nameAtribute = strtolower(substr($name, 3));
         $solicitacao = substr($name, 0, 3);
-
         if ($solicitacao == "get") {
-            return strtolower($this->$nameAtribute);
+            return $this->$nameAtribute[0];
         } elseif ($solicitacao == "set") {
-            $this->$name = $arguments;
+            $this->$nameAtribute = $arguments;
         } else {
             throw new Exception('O método ' . $name . ' não existe!');
         }
