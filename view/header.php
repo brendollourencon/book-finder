@@ -8,7 +8,8 @@
     <title><?php echo (isset($title) && $title != "") ? $title . " - Book Finder" : "Book Finder"; ?></title>
 
     <!--CSS DEPENDENCIAS-->
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="public/css/app.css">
+
 
     <?php
     if (isset($css) && !empty($css)) {
@@ -21,7 +22,8 @@
     ?>
 
     <!--JS DEPENDENCIAS-->
-    <script src=""></script>
+    <script src="public/js/jquery-3.1.0.min.js"></script>
+    <script src="public/js/app.js"></script>
 
     <?php
     if (isset($js) && !empty($js)) {
@@ -38,9 +40,42 @@
 </body>
 </html>
 
-<header class="header">
+<div class="toolbar header">
     <div class="logo">Book Finder</div>
-    <div class="busca"><input type="text"></div>
-    <div class="carrinho">dwedwedwe</div>
-    <div class="perfil">dewdew</div>
-</header>
+    <div class="search">
+        <i class="material-icons">search</i>
+        <input type="text" placeholder="Busca">
+        <button class="btn-icon close-search">
+            <i class="material-icons">close</i>
+        </button>
+    </div>
+    <div class="tools">
+
+        <button class="btn-icon white open-search">
+            <i class="material-icons">search</i>
+        </button>
+
+        <div class="menu-container">
+            <!--<ul class="menu">
+                <li>Perfil</li>
+                <li>Sair</li>
+            </ul>-->
+            <div class="">
+                <button class="btn-icon white">
+                    <i class="material-icons">shopping_cart</i>
+                </button>
+                <div class="badge">5</div>
+            </div>
+        </div>
+
+        <div class="menu-container">
+            <ul class="menu">
+                <li>Entrar</li>
+                <li>Sair</li>
+            </ul>
+            <div class="menu-btn user">
+                C
+            </div>
+        </div>
+    </div>
+</div>
