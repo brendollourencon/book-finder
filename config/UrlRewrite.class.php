@@ -16,7 +16,7 @@ class UrlRewrite extends Model
         //
 
 
-        //$this->url = (isset($_GET['url']) && $_GET['url']) ? $_GET['url'] : false;
+        $this->url = (isset($_GET['url']) && $_GET['url']) ? $_GET['url'] : false;
         //$this->url = $_GET['url'];
 
         if ($this->url != null) {
