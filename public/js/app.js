@@ -1,8 +1,25 @@
-(function(){
+(function () {
 
     'use strict';
 
     $(document).ready(function () {
+
+        var base_site = "http://localhost/book-finder";
+
+        // ajax teste
+
+        $("#login").on("submit", function (event) {
+            event.preventDefault();
+            $.ajax({
+                url: base_site + "/ajax-auth",
+                method: "POST",
+                data: {ajax: $("#ajax").val(), email: $("#email").val(), senha: $("#senha").val()},
+                success: function (data) {
+                    console.log(data);
+                }
+            });
+        });
+
 
         $('.menu-container').append('<div class="background-click"></div>');
 
@@ -16,7 +33,7 @@
             }
         });
 
-        $('.menu-btn').on('click', function (){
+        $('.menu-btn').on('click', function () {
             $('.menu-container').removeClass('active');
             $(this).parent().addClass('active');
         });
@@ -42,14 +59,14 @@
 
             }, 200);
         });
-        
+
         $('.close-search').on('click', function () {
             var search = $(this).parent().parent().find('.search');
             search.addClass('leave');
 
             setTimeout(function () {
                 search.removeClass('active leave');
-            },200);
+            }, 200);
         });
 
 

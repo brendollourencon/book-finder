@@ -9,8 +9,6 @@
 
     <!--CSS DEPENDENCIAS-->
     <link rel="stylesheet" href="public/css/app.css">
-
-
     <?php
     if (isset($css) && !empty($css)) {
         foreach ($css as $style) {
@@ -24,7 +22,6 @@
     <!--JS DEPENDENCIAS-->
     <script src="public/js/jquery-3.1.0.min.js"></script>
     <script src="public/js/app.js"></script>
-
     <?php
     if (isset($js) && !empty($js)) {
         foreach ($js as $script) {
@@ -36,10 +33,6 @@
     ?>
 </head>
 <body>
-
-</body>
-</html>
-
 <div class="toolbar header">
     <div class="logo">Book Finder</div>
     <div class="search">
