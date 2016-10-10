@@ -49,6 +49,7 @@
 
             setTimeout(function () {
                 search.removeClass('active leave');
+                search.find('input').val('');
             },200);
         });
 
