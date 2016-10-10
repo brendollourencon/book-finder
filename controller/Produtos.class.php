@@ -24,4 +24,10 @@ class Produtos extends ProdutosModel
         return $produtos;
     }
 
+    public function getProdutoPorId($idProduto, $status = "A")
+    {
+        $produto =  parent::getProdutoPorId($idProduto, $status);
+        return $produto;
+    }
+
 }
