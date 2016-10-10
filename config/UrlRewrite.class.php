@@ -15,10 +15,6 @@ class UrlRewrite extends Model
 
     public function __construct()
     {
-        //loja/categoria/criancas
-        //loja/produtos/harry-potter/123
-        //
-
 
         $this->url = (isset($_GET['url']) && $_GET['url']) ? $_GET['url'] : false;
         //$this->url = $_GET['url'];
