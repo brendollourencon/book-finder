@@ -4,6 +4,9 @@ $rotas = [
     "produtos" => "produto",
     "home" => "home",
     "contato" => "fale-conosco",
+    "produto" => "produto",
     "testes" => "testes",
-    'teste2' => 'teste-teste'
+
+    //url de ajax
+    '/ajax/ajax-auth' => 'ajax-auth'
 ];

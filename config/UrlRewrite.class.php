@@ -1,5 +1,9 @@
 <?php
 
+/*
+ * Classe de rescrita de url
+ * @author Brendol L. Oliveira
+ */
 
 class UrlRewrite extends Model
 {
@@ -11,10 +15,6 @@ class UrlRewrite extends Model
 
     public function __construct()
     {
-        //loja/categoria/criancas
-        //loja/produtos/harry-potter/123
-        //
-
 
         $this->url = (isset($_GET['url']) && $_GET['url']) ? $_GET['url'] : false;
         //$this->url = $_GET['url'];
@@ -46,20 +46,26 @@ class UrlRewrite extends Model
                 case "painel":
                     //regras aqui
                     break;
-                case "produtos":
-                    // regras aqui
+                case "produto":
+                    $this->base = BASE_DIR;
+                    $baseView = $this->base . "/view/";
+
+                    $idProduto = explode("-", $this->parametros[1]);
+                    $idProduto = $idProduto[count($idProduto) - 1];
+
+                    unset($parametros);
+                    include_once $baseView . "produto.php";
                     break;
                 default:
 
                     $this->base = BASE_DIR;
                     $baseView = $this->base . "/view/";
 
-                    if (in_array($this->pagina,$rotas)) {
-                        if (file_exists($baseView . array_search($this->pagina,$rotas) . ".php")) {
+                    if (in_array($this->pagina, $rotas)) {
+                        if (file_exists($baseView . array_search($this->pagina, $rotas) . ".php")) {
                             $parametros = $this->parametros;
-                            include_once $baseView . array_search($this->pagina,$rotas) . ".php";
-                        }
-                        else{
+                            include_once $baseView . array_search($this->pagina, $rotas) . ".php";
+                        } else {
                             exit("Arquivo ou diretório inexistente");
                         }
 
@@ -70,12 +76,9 @@ class UrlRewrite extends Model
                     break;
             }
 
-
         } else {
             exit("Página em construção");
         }
-
-
     }
 
 

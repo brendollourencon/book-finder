@@ -1,14 +1,15 @@
-<!doctype html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <title>Book Finder</title>
-    <link rel="stylesheet" href="public/css/app.css">
+<?php
 
-    <script src="public/js/jquery-3.1.0.min.js"></script>
-    <script src="public/js/app.js"></script>
-</head>
-<body>
+$title = "Titulo de teste";
+
+$css = ['exemplo', 'exemplo2'];
+$js = ['scri', 'scri2'];
+
+$products = new Produtos();
+$allProduct = $products->getVitrine();
+
+include_once "header.php";
+?>
 
 
 <div class="toolbar header">
@@ -81,5 +82,21 @@
 
 </div>
 
-</body>
-</html>
+<!--Products-->
+<?php
+foreach ($allProduct as $product) {
+    ?>
+    <ul>
+        <li>
+            <a href="<?php echo SITE_URL.'/produto/'. urlAmigavel($product->titulo). "-".$product->id_produto;?>">
+                <?php echo $product->titulo; ?>
+            </a>
+        </li>
+    </ul>
+    <?php
+}
+?>
+
+<?php
+include_once "footer.php";
+?>
