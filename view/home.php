@@ -11,13 +11,22 @@ $allProduct = $products->getVitrine();
 include_once "header.php";
 ?>
 
+
 <div class="toolbar header">
     <div class="logo">Book Finder</div>
     <div class="search">
         <i class="material-icons">search</i>
         <input type="text" placeholder="Busca">
+        <button class="btn-icon close-search">
+            <i class="material-icons">close</i>
+        </button>
     </div>
-    <div style="display: flex; align-items: center">
+    <div class="tools">
+
+        <button class="btn-icon white open-search">
+            <i class="material-icons">search</i>
+        </button>
+
         <div class="menu-container">
             <!--<ul class="menu">
                 <li>Perfil</li>
@@ -66,7 +75,7 @@ include_once "header.php";
 <div>
 
     <div class="input-container">
-        <input type="text" class="control">
+        <input type="text" class="control" required>
         <label for="">Text</label>
         <div class="line"></div>
     </div>
