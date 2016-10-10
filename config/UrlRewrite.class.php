@@ -46,8 +46,16 @@ class UrlRewrite extends Model
                 case "painel":
                     //regras aqui
                     break;
-                case "produtos":
+                case "produto":
                     // regras aqui
+
+                    $this->base = BASE_DIR;
+                    $baseView = $this->base . "/view/";
+                    $idProduto = explode("-",$this->parametros[1]);
+                    $idProduto = $idProduto[count($idProduto) -1 ];
+                    unset($parametros);
+                    include_once $baseView . "produto.php";
+
                     break;
                 default:
 

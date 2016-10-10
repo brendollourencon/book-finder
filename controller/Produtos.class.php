@@ -1,7 +1,7 @@
 <?php
 
 
-class Product extends ProductModel
+class Produtos extends ProdutosModel
 {
 
 
@@ -18,9 +18,10 @@ class Product extends ProductModel
      * @return todos os produtos cadastrados
      * @author Brendol L. Oliveira
      */
-    public function getShowCase($status = "A", $order = "")
+    public function getVitrine($status = "A", $order = "")
     {
-        $produtos = parent::getShowCase($status, $order);
+        $produtos = parent::getVitrine($status, $order);
         return $produtos;
     }
+
 }

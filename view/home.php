@@ -5,8 +5,8 @@ $title = "Titulo de teste";
 $css = ['exemplo', 'exemplo2'];
 $js = ['scri', 'scri2'];
 
-$products = new Product();
-$allProduct = $products->getShowCase();
+$products = new Produtos();
+$allProduct = $products->getVitrine();
 
 include_once "header.php";
 ?>
@@ -78,7 +78,11 @@ include_once "header.php";
 foreach ($allProduct as $product) {
     ?>
     <ul>
-        <li><?php echo $product->titulo;?></li>
+        <li>
+            <a href="<?php echo SITE_URL.'/produto/'. urlAmigavel($product->titulo). "-".$product->id_produto;?>">
+                <?php echo $product->titulo; ?>
+            </a>
+        </li>
     </ul>
     <?php
 }
