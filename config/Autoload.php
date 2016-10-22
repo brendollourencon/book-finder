@@ -1,4 +1,8 @@
 <?php
+/*
+ * Auto load para classes
+ * @author Brendol L.
+ */
 spl_autoload_register(function ($class_name) {
 
     $diretorios = array(

@@ -3,7 +3,7 @@
 
 class ProdutoModel extends Model
 {
-
+    // atributos
     protected $valor;
     protected $titulo;
     protected $descricao;

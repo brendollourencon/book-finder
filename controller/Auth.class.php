@@ -1,5 +1,8 @@
 <?php
-
+/*
+ * Classe de autenticação do sistema
+ * @author: Brendol L.
+ */
 
 class Auth extends AuthModel
 {

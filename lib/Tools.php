@@ -7,7 +7,7 @@
 /*
  * Função para deixar qualquer link como url amigavel
  * @return retona string com formato de url amigavel
- * @Brendol L. Oliveira
+ * @author Brendol L. Oliveira
 */
 function urlAmigavel($url){
     $url = str_replace(" ","-",$url);

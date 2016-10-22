@@ -3,16 +3,19 @@
 
 class Db extends Model
 {
-
-
     public static $pdo;
 
+    /* metodo construtor*/
     public function __construct()
     {
         self::$pdo = null;
     }
 
-
+    /*
+     * Função responsavel pela conexão no banco de dados
+     * @return Objeto PDO.
+     * @author Brendol L.
+     */
     public static function exec()
     {
         try {
@@ -26,6 +29,10 @@ class Db extends Model
         }
     }
 
+    /*
+     * Fecha conexão
+     * @author Brendol L.
+     */
     public static function closeConnection(){
         self::$pdo = null;
     }

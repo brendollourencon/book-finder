@@ -3,7 +3,10 @@
 
 class Model{
 
-
+    /*
+     * Encapsulamento de métodos
+     * @author Brendol L.
+     */
     public function __call($name, $arguments)
     {
         $nameAtribute = strtolower(substr($name, 3));

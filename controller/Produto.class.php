@@ -1,6 +1,5 @@
 <?php
 
-
 class Produto extends ProdutoModel
 {
     /*
@@ -22,6 +21,11 @@ class Produto extends ProdutoModel
         return $produtos;
     }
 
+    /*
+     * Busca Produto pelo identificador
+     * @return retorna informações do produto
+     * @author Brendol L.
+     */
     public function getProdutoPorId($idProduto, $status = "A")
     {
         $produto =  parent::getProdutoPorId($idProduto, $status);

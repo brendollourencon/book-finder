@@ -20,6 +20,10 @@ class Carrinho extends CarrinhoModel
         return $info;
     }
 
+    /*
+     * inclui o produto na sessão do carrinho
+     * @author Brendol L. Oliveira
+     */
     public function incluiProdutoSessao($idProduto)
     {
         session_start();
@@ -32,6 +36,11 @@ class Carrinho extends CarrinhoModel
         }
     }
 
+    /*
+     * Quantidade de produtos no carrinho
+     * @return Quantidade de produtos no carrinho
+     * @author Brendol L. Oliveira
+     */
     public function quantidadeProdutoCarrinho()
     {
         if (empty($_SESSION['carrinho'])) {
@@ -40,10 +49,19 @@ class Carrinho extends CarrinhoModel
         return count($_SESSION['carrinho']);
     }
 
+    /*
+     * sessão carrinho
+     * @return retorna sessão carrinho
+     * @author Brendol L. Oliveira
+     */
     public function produtosCarrinho(){
         return $_SESSION['carrinho'];
     }
 
+    /*
+     * Deleta produto do carrinho
+     * @author: Brendol L.
+     */
     public function deletaProdutoCarrinho($idProduto){
         $posicaoProduto = array_search($idProduto);
         unset($this->produtosCarrinho()[$posicaoProduto]);
