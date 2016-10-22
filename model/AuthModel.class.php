@@ -24,6 +24,7 @@ class AuthModel extends Model
         $consultaCliente->execute();
 
         $resultado = $consultaCliente->fetch(PDO::FETCH_OBJ);
+        Db::closeConnection();
         return $resultado;
     }
 

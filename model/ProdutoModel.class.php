@@ -26,6 +26,7 @@ class ProdutoModel extends Model
         $query = Db::exec()->prepare($sql);
         $query->execute();
         $resultado = $query->fetchAll(PDO::FETCH_OBJ);
+        Db::closeConnection();
         return $resultado;
     }
 
@@ -43,6 +44,7 @@ class ProdutoModel extends Model
         $query->bindValue(2,$status);
         $query->execute();
         $resultado = $query->fetch(PDO::FETCH_OBJ);
+        Db::closeConnection();
         return $resultado;
     }
 
