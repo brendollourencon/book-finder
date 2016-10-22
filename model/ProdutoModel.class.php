@@ -36,9 +36,11 @@ class ProdutoModel extends Model
      */
     protected function getProdutoPorId($idProduto, $status)
     {
-        $sql = "SELECT * FROM produtos WHERE id_produto = $idProduto AND status = '" . $status . "'";
+        $sql = "SELECT * FROM produtos WHERE id_produto = ? AND status = ? ";
 
         $query = Db::exec()->prepare($sql);
+        $query->bindValue(1,$idProduto);
+        $query->bindValue(2,$status);
         $query->execute();
         $resultado = $query->fetch(PDO::FETCH_OBJ);
         return $resultado;

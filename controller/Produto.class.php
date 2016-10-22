@@ -3,8 +3,6 @@
 
 class Produto extends ProdutoModel
 {
-
-
     /*
      * metodo contrutor
      */

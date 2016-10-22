@@ -11,7 +11,6 @@ $info = new Carrinho();
 $info->incluiProdutoSessao($idProduto);
 
 $produtosCarrinho = $info->produtosCarrinho();
-
 ?>
 
     <h1>Produtos no carrinho</h1>
