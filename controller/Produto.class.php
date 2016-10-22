@@ -1,7 +1,7 @@
 <?php
 
 
-class Produtos extends ProdutosModel
+class Produto extends ProdutoModel
 {
 
 

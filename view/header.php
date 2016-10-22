@@ -8,20 +8,20 @@
     <title><?php echo (isset($title) && $title != "") ? $title . " - Book Finder" : "Book Finder"; ?></title>
 
     <!--CSS DEPENDENCIAS-->
-    <link rel="stylesheet" href="public/css/app.css">
+    <link rel="stylesheet" href="<?php echo SITE_CSS; ?>/app.css">
     <?php
     if (isset($css) && !empty($css)) {
         foreach ($css as $style) {
             ?>
-            <link rel="stylesheet" href="<?php echo SITE_CSS.'/'.$style.'.css'; ?>">
+            <link rel="stylesheet" href="<?php echo SITE_CSS . '/' . $style . '.css'; ?>">
             <?php
         }
     }
     ?>
 
     <!--JS DEPENDENCIAS-->
-    <script src="public/js/jquery-3.1.0.min.js"></script>
-    <script src="public/js/app.js"></script>
+    <script src="<?php echo SITE_JS; ?>/jquery-3.1.0.min.js"></script>
+    <script src="<?php echo SITE_JS; ?>/app.js"></script>
     <?php
     if (isset($js) && !empty($js)) {
         foreach ($js as $script) {
@@ -33,6 +33,14 @@
     ?>
 </head>
 <body>
+
+<?php
+session_start();
+$carrinho = new Carrinho();
+$quantidadeCarrinho = ($carrinho->quantidadeProdutoCarrinho() != "") ? $carrinho->quantidadeProdutoCarrinho() : 0;
+?>
+
+
 <div class="toolbar header">
     <div class="logo">Book Finder</div>
     <div class="search">
@@ -57,7 +65,7 @@
                 <button class="btn-icon white">
                     <i class="material-icons">shopping_cart</i>
                 </button>
-                <div class="badge">5</div>
+                <div class="badge"><?php echo $quantidadeCarrinho; ?></div>
             </div>
         </div>
 

@@ -5,53 +5,11 @@ $title = "Titulo de teste";
 $css = ['exemplo', 'exemplo2'];
 $js = ['scri', 'scri2'];
 
-$products = new Produtos();
+$products = new Produto();
 $allProduct = $products->getVitrine();
 
 include_once "header.php";
 ?>
-
-
-<div class="toolbar header">
-    <div class="logo">Book Finder</div>
-    <div class="search">
-        <i class="material-icons">search</i>
-        <input type="text" placeholder="Busca">
-        <button class="btn-icon close-search">
-            <i class="material-icons">close</i>
-        </button>
-    </div>
-    <div class="tools">
-
-        <button class="btn-icon white open-search">
-            <i class="material-icons">search</i>
-        </button>
-
-        <div class="menu-container">
-            <!--<ul class="menu">
-                <li>Perfil</li>
-                <li>Sair</li>
-            </ul>-->
-            <div class="">
-                <button class="btn-icon white">
-                    <i class="material-icons">shopping_cart</i>
-                </button>
-                <div class="badge">5</div>
-            </div>
-        </div>
-
-        <div class="menu-container">
-            <ul class="menu">
-                <li>Entrar</li>
-                <li>Sair</li>
-            </ul>
-            <div class="menu-btn user">
-                C
-            </div>
-        </div>
-    </div>
-</div>
-
 <div style="margin-top: 64px">
     <button class="btn">NORMAL</button>
     <button class="btn" disabled>Disabled</button>

@@ -1,7 +1,7 @@
 <?php
 
 
-class ProdutosModel extends Model
+class ProdutoModel extends Model
 {
 
     protected $valor;
