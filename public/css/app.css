@@ -171,6 +171,14 @@ body {
     background-color: rgba(33, 150, 243, 0.25);
 }
 
+.btn-icon.red {
+    color: #f44336;
+}
+
+.btn-icon.red:before {
+    background-color: rgba(244, 67, 54, 0.25);
+}
+
 .btn-icon:disabled {
     color: rgba(0, 0, 0, 0.4);
     background-color: transparent;
@@ -326,7 +334,7 @@ body {
 
 .menu-container .menu > li {
     padding: 0 16px;
-    height: 48px;
+    min-height: 48px;
     display: flex;
     align-items: center;
     cursor: pointer;

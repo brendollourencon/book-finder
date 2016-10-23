@@ -79,36 +79,40 @@
                 search.removeClass('active leave');
             }, 200);
         });
-
-
-
-        var snackTimeout;
-        function snack (config) {
-            var text = config.text ? '<div>' + config.text + '</div>' : '',
-                control = config.control ? '<div class="icon ' + config.control.action + '"><i class="material-icons">' + config.control.icon + '</i></div>' : '',
-                snack = '<div class="snackbar">' + text + control + '</div>';
-
-            $('body').append(snack);
-            var thisSnack = $('.snackbar')[$('.snackbar').length-1];
-
-            snackTimeout = setTimeout(function () {
-                hide($(thisSnack));
-            }, config.delay || 5000);
-
-            $('.snackbar .icon.hide').click(function () {
-                hide($(this).parent());
-            });
-        }
-
-        function hide (snack) {
-            snack.addClass('leave');
-
-            setTimeout(function () {
-                snack.remove();
-            }, 500);
-
-            clearTimeout(snackTimeout);
-
-        }
     });
 })();
+
+// Snackbar
+var snackTimeout;
+function snack (config) {
+    var text = config.text ? '<div>' + config.text + '</div>' : '',
+        control = config.control ? '<div class="icon ' + config.control.action + '"><i class="material-icons">' + config.control.icon + '</i></div>' : '',
+        snack = '<div class="snackbar">' + text + control + '</div>',
+        snacks = $('.snackbar');
+
+    if (snacks.length)
+        snacks.addClass('leave');
+
+    $('body').append(snack);
+    snacks = $('.snackbar');
+    var thisSnack = snacks[snacks.length-1];
+
+    snackTimeout = setTimeout(function () {
+        hide($(thisSnack));
+    }, config.delay || 5000);
+
+    $('.snackbar .icon.hide').click(function () {
+        hide($(this).parent());
+    });
+}
+
+function hide (snack) {
+    snack.addClass('leave');
+
+    setTimeout(function () {
+        snack.remove();
+    }, 500);
+
+    clearTimeout(snackTimeout);
+
+}
