@@ -2,14 +2,15 @@
 
 $title = "Titulo de teste";
 
-$css = ['exemplo', 'exemplo2'];
+/*$css = ['exemplo', 'exemplo2'];
 $js = ['scri', 'scri2'];
 
 $products = new Produto();
-$allProduct = $products->getVitrine();
+$allProduct = $products->getVitrine();*/
 
 include_once "header.php";
 ?>
+s
 
 <div class="card" style="margin: 74px auto 0; width: 400px">
     <div class="card-image">
@@ -26,7 +27,7 @@ include_once "header.php";
         <button class="btn-icon blue">
             <i class="material-icons">add_shopping_cart</i>
         </button>
-        <button class="btn blue">Visualizar</button>
+        <button class="btn blue" id="snack-test">Visualizar</button>
     </div>
 </div>
 
