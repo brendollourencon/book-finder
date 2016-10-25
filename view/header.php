@@ -90,6 +90,35 @@ $quantidadeCarrinho = ($carrinho->quantidadeProdutoCarrinho() != "") ? $carrinho
                         </div>
                     </div>
                 </li>
+                <li class="item">
+                    <div class="item-container">
+                        <div class="image" style="background-image: url('<?php echo SITE_IMAGES . '/card.jpg' ?>')"></div>
+                        <div class="name">
+                            <div>Nome do produto</div>
+                            <div class="secondary">Código: 13548</div>
+                        </div>
+                        <div class="amount">
+                            <button class="icon btn-icon red small remove-cart">
+                                <i class="material-icons">remove</i>
+                            </button>
+                            <div class="amount-product">
+                                <input type="text" value="<?php echo 1?>" data-val="<?php echo 1?>">
+                            </div>
+                            <button class="icon btn-icon blue small add-cart">
+                                <i class="material-icons">add</i>
+                            </button>
+                        </div>
+                        <div class="subtotal">
+                            R$120,00
+                        </div>
+                        <div class="control">
+                            <button class="icon btn-icon red small">
+                                <i class="material-icons">close</i>
+                            </button>
+                        </div>
+                    </div>
+                </li>
+
                 <?php
                 foreach ($carrinhoItens as $item): ?>
                     <li class="item">

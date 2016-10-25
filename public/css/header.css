@@ -1,0 +1,103 @@
+.menu-cart {
+    overflow: hidden;
+}
+
+.menu.menu-cart .item.leave {
+    transform: translateX(100%);
+    transition: all 200ms ease-in-out;
+}
+
+.menu-cart .item .item-container {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.menu-cart .item .item-container .image {
+    min-width: 35px;
+    max-width: 35px;
+    min-height: 35px;
+    max-height: 35px;
+    background-size: cover;
+}
+
+.menu-cart .item .item-container .name {
+    color: rgba(0,0,0,.8);
+    font-size: 14px;
+    margin: 0 12px;
+    width: 175px;
+}
+
+.menu-cart .item .item-container .name div {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.menu-cart .item .item-container .name .secondary {
+    color: rgba(0,0,0,.4);
+    font-size: 12px;
+}
+
+.menu-cart .item .item-container .amount {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.menu-cart .item .item-container .amount .icon {
+    margin: 0 6px;
+}
+
+.menu-cart .item .item-container .amount .icon i {
+    font-size: 18px;
+}
+
+.menu-cart .item .item-container .amount .amount-product input {
+    text-align: center;
+    width: 40px;
+    border-radius: 2px;
+    border: 1px solid rgba(0,0,0,.2);
+    color: rgba(0,0,0,.8);
+    padding: 7px 0;
+    font-size: 14px;
+}
+
+.menu-cart .item .item-container .subtotal {
+    font-size: 14px;
+    color: rgba(0,0,0,.8);
+    padding: 6px;
+    display: inline-block;
+}
+
+.menu-cart .item .item-container .control {
+    margin-left: 9px;
+    }
+
+.menu-cart .show-cart {
+    justify-content: center;
+    color: #1E88E5;
+}
+
+.menu-cart .empty {
+    justify-content: center;
+    color: rgba(0,0,0,.5);
+    width: 260px;
+}
+
+.menu-container .menu.menu-cart > li.empty:hover {
+    background-color: #FFF;
+}
+
+@media (max-width: 600px) {
+    .menu.menu-cart {
+        position: fixed;
+        top: 60px;
+        right: 0;
+        left: 0;
+        transform-origin: 85% 0;
+    }
+}

@@ -83,36 +83,41 @@
 })();
 
 // Snackbar
-var snackTimeout;
+var snackTimeout = [];
+
 function snack (config) {
+    $('.snackbar').addClass('leave');
+
+    for (var i = 0; i < snackTimeout.length; i++)
+        clearTimeout(snackTimeout[i]);
+
     var text = config.text ? '<div>' + config.text + '</div>' : '',
         control = config.control ? '<div class="icon ' + config.control.action + '"><i class="material-icons">' + config.control.icon + '</i></div>' : '',
-        snack = '<div class="snackbar">' + text + control + '</div>',
-        snacks = $('.snackbar');
-
-    if (snacks.length)
-        snacks.addClass('leave');
+        snack = $('<div class="snackbar">' + text + control + '</div>');
 
     $('body').append(snack);
-    snacks = $('.snackbar');
-    var thisSnack = snacks[snacks.length-1];
 
-    snackTimeout = setTimeout(function () {
-        hide($(thisSnack));
+    var thisTimeout = snackTimeout.length + 1;
+    snackTimeout.push(thisTimeout);
+
+    setTimeout(function () {
+        hide(snack, thisTimeout);
     }, config.delay || 5000);
 
+
     $('.snackbar .icon.hide').click(function () {
-        hide($(this).parent());
+        hide($(this).parent(), thisTimeout);
     });
+
 }
 
-function hide (snack) {
+function hide (snack, thisTimeout) {
     snack.addClass('leave');
 
     setTimeout(function () {
         snack.remove();
     }, 500);
 
-    clearTimeout(snackTimeout);
-
+    clearTimeout(thisTimeout);
 }
+
