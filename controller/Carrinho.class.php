@@ -3,10 +3,7 @@
 class Carrinho extends CarrinhoModel
 {
 
-    public function __construct()
-    {
-
-    }
+    public function __construct() {}
 
     /*
      * Pega informação do produto pelo id
@@ -24,16 +21,28 @@ class Carrinho extends CarrinhoModel
      * inclui o produto na sessão do carrinho
      * @author Brendol L. Oliveira
      */
-    public function incluiProdutoSessao($idProduto)
+    public function incluiProdutoSessao($idProduto,$valorProduto)
     {
         session_start();
+
+        $carrinhoTemp = ['id' => $idProduto, 'quantidade' => 1, 'valor' => $valorProduto];
 
         if (empty($_SESSION['carrinho'])) {
             $_SESSION['carrinho'] = array();
         }
-        if (!in_array($idProduto, $_SESSION['carrinho'])) {
-            array_push($_SESSION['carrinho'], $idProduto);
+
+        //print_r($_SESSION['carrinho']);
+        $verificaChave = true;
+        for ($i = 0; $i < count($_SESSION['carrinho']); $i++) {
+            if ($_SESSION['carrinho'][$i]['id'] == $idProduto) {
+                $verificaChave = false;
+            }
         }
+
+        if ($verificaChave) {
+            array_push($_SESSION['carrinho'], $carrinhoTemp);
+        }
+
     }
 
     /*
@@ -44,7 +53,7 @@ class Carrinho extends CarrinhoModel
     public function quantidadeProdutoCarrinho()
     {
         if (empty($_SESSION['carrinho'])) {
-            $_SESSION['carrinho'] = array();
+            return 0;
         }
         return count($_SESSION['carrinho']);
     }
@@ -54,7 +63,11 @@ class Carrinho extends CarrinhoModel
      * @return retorna sessão carrinho
      * @author Brendol L. Oliveira
      */
-    public function produtosCarrinho(){
+    public function produtosCarrinho()
+    {
+        if (empty($_SESSION['carrinho'])) {
+            return false;
+        }
         return $_SESSION['carrinho'];
     }
 
@@ -62,8 +75,14 @@ class Carrinho extends CarrinhoModel
      * Deleta produto do carrinho
      * @author: Brendol L.
      */
-    public function deletaProdutoCarrinho($idProduto){
-        $posicaoProduto = array_search($idProduto);
-        unset($this->produtosCarrinho()[$posicaoProduto]);
+    public function deletaProdutoCarrinho($idProduto)
+    {
+        //exit(var_dump($this->produtosCarrinho()));
+
+        foreach ($this->produtosCarrinho() as $produto){
+            if($produto['id'] == $idProduto){
+                unset($produto['id']);
+            }
+        }
     }
 }

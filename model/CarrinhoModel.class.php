@@ -3,8 +3,10 @@
 class CarrinhoModel extends Model
 {
 
-    /* metodo construtor*/
+    protected $carrinho;
+    protected static $quantidade;
 
+    /* metodo construtor*/
     private function __construct()
     {
 
