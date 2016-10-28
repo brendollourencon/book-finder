@@ -37,12 +37,14 @@
 <body>
 
 <?php
-session_start();
+$produto = new Produto();
 $carrinho = new Carrinho();
+$carrinho->incluiProdutoSessao(1, 201);
+
 $carrinhoItens = $carrinho->produtosCarrinho();
 $quantidadeCarrinho = ($carrinho->quantidadeProdutoCarrinho() != "") ? $carrinho->quantidadeProdutoCarrinho() : 0;
-?>
 
+?>
 
 <div class="toolbar header">
 
@@ -62,87 +64,42 @@ $quantidadeCarrinho = ($carrinho->quantidadeProdutoCarrinho() != "") ? $carrinho
 
         <div class="menu-container">
             <ul class="menu menu-cart">
-                <li class="item">
-                    <div class="item-container">
-                        <div class="image" style="background-image: url('<?php echo SITE_IMAGES . '/card.jpg' ?>')"></div>
-                        <div class="name">
-                            <div>Nome do produto</div>
-                            <div class="secondary">Código: 13548</div>
-                        </div>
-                        <div class="amount">
-                            <button class="icon btn-icon red small remove-cart">
-                                <i class="material-icons">remove</i>
-                            </button>
-                            <div class="amount-product">
-                                <input type="text" value="<?php echo 1?>" data-val="<?php echo 1?>">
-                            </div>
-                            <button class="icon btn-icon blue small add-cart">
-                                <i class="material-icons">add</i>
-                            </button>
-                        </div>
-                        <div class="subtotal">
-                            R$120,00
-                        </div>
-                        <div class="control">
-                            <button class="icon btn-icon red small">
-                                <i class="material-icons">close</i>
-                            </button>
-                        </div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="item-container">
-                        <div class="image" style="background-image: url('<?php echo SITE_IMAGES . '/card.jpg' ?>')"></div>
-                        <div class="name">
-                            <div>Nome do produto</div>
-                            <div class="secondary">Código: 13548</div>
-                        </div>
-                        <div class="amount">
-                            <button class="icon btn-icon red small remove-cart">
-                                <i class="material-icons">remove</i>
-                            </button>
-                            <div class="amount-product">
-                                <input type="text" value="<?php echo 1?>" data-val="<?php echo 1?>">
-                            </div>
-                            <button class="icon btn-icon blue small add-cart">
-                                <i class="material-icons">add</i>
-                            </button>
-                        </div>
-                        <div class="subtotal">
-                            R$120,00
-                        </div>
-                        <div class="control">
-                            <button class="icon btn-icon red small">
-                                <i class="material-icons">close</i>
-                            </button>
-                        </div>
-                    </div>
-                </li>
-
                 <?php
-                foreach ($carrinhoItens as $item): ?>
-                    <li class="item">
-                        <div class="item-container">
-                            <div class="image" style="background-image: url('<?php echo SITE_IMAGES . '/card.jpg' ?>')"></div>
-                            <div class="name">
-                                <div>Nome do produto</div>
-                                <div class="secondary">Código: 13548</div>
+                if ($quantidadeCarrinho > 0){
+                    foreach ($carrinhoItens as $item):
+                        $dadosProduto = $produto->getProdutoPorId($item['id']);
+                        ?>
+                        <li class="item" data-id="<?php echo $item['id']?>">
+                            <div class="item-container">
+                                <div class="image" style="background-image: url('<?php echo SITE_IMAGES . '/card.jpg' ?>')"></div>
+                                <div class="name">
+                                    <div><?php echo $dadosProduto->titulo?></div>
+                                    <div class="secondary">Código: <?php echo $dadosProduto->id_produto?></div>
+                                </div>
+                                <div class="amount">
+                                    <button class="icon btn-icon red small remove-cart">
+                                        <i class="material-icons">remove</i>
+                                    </button>
+                                    <div class="amount-product">
+                                        <input type="text" value="<?php echo $item['quantidade']?>" data-val="<?php $item['quantidade']?>">
+                                    </div>
+                                    <button class="icon btn-icon blue small add-cart">
+                                        <i class="material-icons">add</i>
+                                    </button>
+                                </div>
+                                <div class="subtotal" data-subtotal="<?php echo $dadosProduto->valor?>">
+                                    <?php echo 'R$' . number_format($dadosProduto->valor *  $item['quantidade'], 2, ',', '.') ?>
+                                </div>
+                                <div class="control">
+                                    <button class="icon btn-icon red small">
+                                        <i class="material-icons">close</i>
+                                    </button>
+                                </div>
                             </div>
-                            <div class="amount">
-                                <div class="icon remove-cart"><i class="material-icons">remove</i></div>
-                                <div class="amount-product"><input type="text"></div>
-                                <div class="icon add-cart"><i class="material-icons">add</i></div>
-                            </div>
-                            <div class="subtotal">
-                                R$120,00
-                            </div>
-                            <div class="control">
-                                <i class="material-icons">close</i>
-                            </div>
-                        </div>
-                    </li>
+                        </li>
                 <?php
-                endforeach;
+                    endforeach;
+                }
                 if ($quantidadeCarrinho > 0) : ?>
                     <li class="show-cart">Ir para o carrinho</li>
                 <?php
@@ -155,7 +112,7 @@ $quantidadeCarrinho = ($carrinho->quantidadeProdutoCarrinho() != "") ? $carrinho
                 <button class="btn-icon white">
                     <i class="material-icons">shopping_cart</i>
                 </button>
-                <div class="badge"><?php echo $quantidadeCarrinho; ?></div>
+                <div class="badge cart" data-value="<?php echo $quantidadeCarrinho; ?>"><?php echo $quantidadeCarrinho; ?></div>
             </div>
         </div>
 
@@ -170,3 +127,5 @@ $quantidadeCarrinho = ($carrinho->quantidadeProdutoCarrinho() != "") ? $carrinho
         </div>
     </div>
 </div>
+
+<?php var_dump($_SESSION)?>

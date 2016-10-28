@@ -249,6 +249,10 @@ body {
     height: 64px;
 }
 
+.menu-offset {
+    margin-top: 64px;
+}
+
 .toolbar.header {
     position: fixed;
     top:0;

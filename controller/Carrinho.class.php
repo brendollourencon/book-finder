@@ -2,9 +2,7 @@
 
 class Carrinho extends CarrinhoModel
 {
-
     public function __construct() {}
-
     /*
      * Pega informação do produto pelo id
      * @return informações do produto pelo id
@@ -16,21 +14,17 @@ class Carrinho extends CarrinhoModel
         $info = $infoProduto->getProdutoPorId($idProduto);
         return $info;
     }
-
     /*
      * inclui o produto na sessão do carrinho
      * @author Brendol L. Oliveira
      */
     public function incluiProdutoSessao($idProduto,$valorProduto)
     {
-        session_start();
-
+//        session_start();
         $carrinhoTemp = ['id' => $idProduto, 'quantidade' => 1, 'valor' => $valorProduto];
-
         if (empty($_SESSION['carrinho'])) {
             $_SESSION['carrinho'] = array();
         }
-
         //print_r($_SESSION['carrinho']);
         $verificaChave = true;
         for ($i = 0; $i < count($_SESSION['carrinho']); $i++) {
@@ -38,13 +32,10 @@ class Carrinho extends CarrinhoModel
                 $verificaChave = false;
             }
         }
-
         if ($verificaChave) {
             array_push($_SESSION['carrinho'], $carrinhoTemp);
         }
-
     }
-
     /*
      * Quantidade de produtos no carrinho
      * @return Quantidade de produtos no carrinho
@@ -57,7 +48,6 @@ class Carrinho extends CarrinhoModel
         }
         return count($_SESSION['carrinho']);
     }
-
     /*
      * sessão carrinho
      * @return retorna sessão carrinho
@@ -70,18 +60,36 @@ class Carrinho extends CarrinhoModel
         }
         return $_SESSION['carrinho'];
     }
-
     /*
      * Deleta produto do carrinho
      * @author: Brendol L.
      */
     public function deletaProdutoCarrinho($idProduto)
     {
-        //exit(var_dump($this->produtosCarrinho()));
 
-        foreach ($this->produtosCarrinho() as $produto){
+        foreach ($this->produtosCarrinho() as $index => $produto){
             if($produto['id'] == $idProduto){
-                unset($produto['id']);
+                unset($_SESSION['carrinho'][$index]);
+            }
+        }
+    }
+
+    public function alteraQuantidade($idProduto, $quantidade)
+    {
+
+        foreach ($this->produtosCarrinho() as $key => $item) {
+            if ($item['id'] == $idProduto) {
+                $_SESSION['carrinho'][$key]['quantidade'] = (int)$quantidade;
+                return $this->calculaSubtotal($idProduto);
+            }
+        }
+    }
+
+    public function calculaSubtotal ($idProduto) {
+        $dadosProduto = $this->getInfomacaoPorId($idProduto);
+        foreach ($_SESSION['carrinho'] as $item) {
+            if ($item['id'] == $idProduto) {
+                return 'R$' . number_format($dadosProduto->valor *  $item['quantidade'], 2, ',', '.');
             }
         }
     }
