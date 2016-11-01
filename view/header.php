@@ -71,7 +71,7 @@ $quantidadeCarrinho = ($carrinho->quantidadeProdutoCarrinho() != "") ? $carrinho
                         ?>
                         <li class="item" data-id="<?php echo $item['id']?>">
                             <div class="item-container">
-                                <div class="image" style="background-image: url('<?php echo SITE_IMAGES . '/card.jpg' ?>')"></div>
+                                <div class="image" style="background-image: url('<?php echo SITE_IMAGENS . '/card.jpg' ?>')"></div>
                                 <div class="name">
                                     <div><?php echo $dadosProduto->titulo?></div>
                                     <div class="secondary">Código: <?php echo $dadosProduto->id_produto?></div>

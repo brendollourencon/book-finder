@@ -18,16 +18,13 @@ h1.title{text-align: center; font-family: 'Roboto', sans-serif; font-size: 20px;
 #container-carrinho .produto .img img{max-width: 100px; display: block; margin: 0 auto;}
 #container-carrinho .produto .img{width: 20%; list-style: none}
 #container-carrinho .produto .descricao{width: 50%; list-style: none}
-#container-carrinho .produto .quantidade{width: 10%; list-style: none;}
-#container-carrinho .produto .quantidade input{width: 100%;}
+#container-carrinho .produto .quantidade{list-style: none;}
 #container-carrinho .produto .quantidade .amount{
     display: flex;
     align-items: center;
     flex-direction: row;
 }
 #container-carrinho .produto .quantidade .amount .amount-product input{
-    max-width: 40px;
-    width: 100%;
     text-align: center;
 }
 #container-carrinho .produto .valor{width: 20%; list-style: none}

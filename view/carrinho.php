@@ -57,10 +57,10 @@ include_once "header.php";
                                     <i class="material-icons">add</i>
                                 </button>
                             </div>
-                            <!--                    <input type="text" class="numero" value="-->
-                            <?php //echo $produto['quantidade'] ?><!--">-->
                         </li>
-                        <li class="valor rs"><?php echo $infoProduto->valor ?></li>
+                        <li class="valor rs">
+                            <?php echo 'R$ ' . number_format($infoProduto->valor, 2, ',', '.') ?>
+                        </li>
                     </ul>
                     <?php
                     $valorTotal += $infoProduto->valor;

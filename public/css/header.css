@@ -48,7 +48,7 @@
     flex-direction: row;
 }
 
-.menu-cart .item .item-container .amount .icon {
+.amount .icon {
     margin: 0 6px;
 }
 
@@ -56,7 +56,7 @@
     font-size: 18px;
 }
 
-.menu-cart .item .item-container .amount .amount-product input {
+.amount .amount-product input {
     text-align: center;
     width: 40px;
     border-radius: 2px;
