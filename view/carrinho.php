@@ -8,10 +8,6 @@ if ($idProduto) {
     // inclui produto no carrinho
     $info->incluiProdutoSessao($idProduto, $valorProduto);
 }
-if ($info->quantidadeProdutoCarrinho() == 0) {
-    exit("carrinho vazio");
-}
-
 
 
 $produtosCarrinho = $info->produtosCarrinho();
