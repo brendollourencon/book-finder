@@ -614,6 +614,7 @@ h1.title{text-align: center; font-family: 'Roboto', sans-serif; font-size: 20px;
 #container-carrinho .produto .img{width: 20%; list-style: none}
 #container-carrinho .produto .descricao{width: 50%; list-style: none}
 #container-carrinho .produto .quantidade{width: 10%; list-style: none;}
+#container-carrinho .produto .quantidade input{width: 100%;}
 #container-carrinho .produto .quantidade .amount{
     display: flex;
     align-items: center;
@@ -731,4 +732,8 @@ h1.title{text-align: center; font-family: 'Roboto', sans-serif; font-size: 20px;
             border-radius: 0;
         }
     }
+}
+@media (max-width: 1024px){
+    #container-carrinho ul.produto.title{display: none}
+    #container-carrinho ul.produto{border-bottom: 1px solid #c0c0c0; padding-bottom: 10px}
 }
