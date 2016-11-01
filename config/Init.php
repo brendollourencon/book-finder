@@ -11,5 +11,5 @@ define("SITE_IMAGENS", SITE_URL."/public/imagens");
 define("TYPE_DB", "mysql");
 define("SERVER_DB", "localhost");
 define("USER_DB", "root");
-define("PASSWORD_DB", "");
+define("PASSWORD_DB", "123");
 define("NAME_DB", "livraria");

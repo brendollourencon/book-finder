@@ -270,7 +270,7 @@ body {
     font-size: 19px;
     color: #FFF;
 }
-
+.toolbar.header .logo a{color: #fff; text-decoration: none;}
 .toolbar.header .search {
     background-color: #FFF;
     display: flex;
