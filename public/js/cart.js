@@ -11,7 +11,7 @@
             removeItemCart($(this).closest('li'));
         });
 
-        function removeItemCart (element) {
+        function removeItemCart(element) {
 
             var badge = $('.badge.cart');
 
@@ -65,7 +65,6 @@
             });
 
 
-
         }
 
         $('.add-cart').on('click', function () {
@@ -76,13 +75,13 @@
             mathCart($(this));
         });
 
-        $('.amount-product input').on('keyup',function () {
+        $('.amount-product input').on('keyup', function () {
             var newValue = $(this).val().replace(/[^0-9]+/g, "");
             newValue = newValue ? newValue : 1;
             updateAmount($(this), newValue);
         });
 
-        function mathCart (element, add) {
+        function mathCart(element, add) {
             var amount = element.parent().find('.amount-product input');
             var newValue;
 
@@ -96,7 +95,7 @@
             updateAmount(amount, newValue);
         }
 
-        function updateAmount (element, value){
+        function updateAmount(element, value) {
             $.ajax({
                 url: base_site + "/ajax-cart",
                 method: "POST",
@@ -121,6 +120,52 @@
                 }
             });
         }
+
+
+        /* Brendol L.*/
+        $("#btn-cep").on("click", function () {
+            var cep = $('.numero-cep').val();
+            if (cep != "" && cep != 0 ) {
+                $(".valor-total li.descontos > span").text("10,00");
+                $(".total-frete span").text("10,00");
+                totalCompra();
+            }
+        });
+
+        totalCompra();
+        /*$("#container-carrinho .produto .quantidade .amount .remove-cart").on("click", function () {
+            totalCompra();
+            console.log($(this).parent().find('input').val());
+            //console.log($(".amount-product input").val());
+        });
+        $("#container-carrinho .produto .quantidade .amount .add-cart").on("click", function () {
+            totalCompra();
+        });*/
+
+        $("#container-carrinho .produto .quantidade .numero").on("change", function () {
+            totalCompra();
+        });
+
+
+        function totalCompra() {
+
+            var totalProduto = 0;
+            $('.rs').each(function (index) {
+                var quantidadeProduto = parseInt($(this).parent().find('.quantidade').find('.numero').val());
+                //var quantidadeProduto = parseInt($(this).parent().find('.quantidade').find('.amount').find('.amount-product > input').val());
+                totalProduto += (parseInt($(this).text()) * quantidadeProduto);
+            });
+            $('.total-do-produto span').text((totalProduto).formatMoney(2, ',', '.'));
+            var descontos = parseInt($('.descontos span').text());
+            var totalCompra = parseInt(totalProduto + descontos).formatMoney(2, ',', '.');
+            $('.total-da-compra span').text(totalCompra);
+        }
+
     });
 
+    /* função converte numero para R$ */
+    Number.prototype.formatMoney = function(c, d, t){
+        var n = this, c = isNaN(c = Math.abs(c)) ? 2 : c, d = d == undefined ? "," : d, t = t == undefined ? "." : t, s = n < 0 ? "-" : "", i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "", j = (j = i.length) > 3 ? j % 3 : 0;
+        return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+    };
 })();

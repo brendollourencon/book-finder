@@ -594,6 +594,59 @@ body {
     padding-right: 0;
 }
 
+
+
+/* carinho */
+.container{clear: both;content: ' '}
+h1.title{text-align: center; font-family: 'Roboto', sans-serif; font-size: 20px; color: #464646;}
+#container-carrinho{width: 90%; margin: 20px auto; padding: 0 10px; color: #464646}
+#container-carrinho:after{clear: both; display: block; content: ' '}
+#container-carrinho .produto:first-child{border-bottom: 1px solid #c0c0c0;}
+#container-carrinho .produto{
+    width: 100%;
+    display: inline-flex;
+    text-align: center;
+    padding: 10px 0;
+    -webkit-align-items: center; /* Safari */
+    align-items: center;
+}
+#container-carrinho .produto .img img{max-width: 100px; display: block; margin: 0 auto;}
+#container-carrinho .produto .img{width: 20%; list-style: none}
+#container-carrinho .produto .descricao{width: 50%; list-style: none}
+#container-carrinho .produto .quantidade{width: 10%; list-style: none;}
+#container-carrinho .produto .quantidade .amount{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+#container-carrinho .produto .quantidade .amount .amount-product input{
+    max-width: 40px;
+    width: 100%;
+    text-align: center;
+}
+#container-carrinho .produto .valor{width: 20%; list-style: none}
+#container-carrinho .container-frete-valor{margin-top: 20px;}
+#container-carrinho .container-frete-valor .frete-cliente{
+    padding: 20px 0;
+    width: 25%;
+    border-top: 1px solid #c0c0c0;
+    float: left;
+}
+#container-carrinho .container-frete-valor .frete-cliente h2.title{font-size: 14px;}
+#container-carrinho .container-frete-valor .valor-total{
+    padding: 20px 0;
+    width: 25%;
+    float: right;
+    border-top: 1px solid #c0c0c0;
+}
+#container-carrinho .container-frete-valor .frete-cliente .total-frete{margin-top: 10px;}
+#container-carrinho .valor-total ul li{list-style: none; padding: 5px 0}
+#container-carrinho .finalizar-pedido button.green{
+    margin: 0 auto;
+    display: block;
+    background-color: #4caf50;
+    color: #fff;
+}
 @media (max-width: 600px) {
     .toolbar.header .search {
         display: none;

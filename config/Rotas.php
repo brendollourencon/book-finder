@@ -7,9 +7,8 @@ $rotas = [
     "produto" => "produto",
     "carrinho" => "carrinho",
     "testes" => "testes",
-    "login" => "login-usuario",
-    'exemplos' => 'exemplos',
-
+    "finaliza-pedido" => "pedido-finalizado",
+    "exemplos" => "exemplos",
     //url de ajax
     '/ajax/ajax-auth' => 'ajax-auth',
     '/ajax/ajax-cart' => 'ajax-cart',

@@ -39,7 +39,7 @@
 <?php
 $produto = new Produto();
 $carrinho = new Carrinho();
-$carrinho->incluiProdutoSessao(1, 201);
+//$carrinho->incluiProdutoSessao(1, 201);
 
 $carrinhoItens = $carrinho->produtosCarrinho();
 $quantidadeCarrinho = ($carrinho->quantidadeProdutoCarrinho() != "") ? $carrinho->quantidadeProdutoCarrinho() : 0;
@@ -48,7 +48,7 @@ $quantidadeCarrinho = ($carrinho->quantidadeProdutoCarrinho() != "") ? $carrinho
 
 <div class="toolbar header">
 
-    <div class="logo">Book Finder</div>
+    <div class="logo"><a href="<?php echo SITE_URL; ?>">Book Finder</a></div>
     <div class="search">
         <i class="material-icons">search</i>
         <input type="text" placeholder="Busca">
@@ -101,7 +101,11 @@ $quantidadeCarrinho = ($carrinho->quantidadeProdutoCarrinho() != "") ? $carrinho
                     endforeach;
                 }
                 if ($quantidadeCarrinho > 0) : ?>
-                    <li class="show-cart">Ir para o carrinho</li>
+                    <li class="show-cart">
+                        <a href="<?php echo SITE_URL; ?>/carrinho">
+                            Ir para o carrinho
+                        </a>
+                    </li>
                 <?php
                 else: ?>
                     <li class="empty">Não existe produtos no carrinho</li>
@@ -128,4 +132,4 @@ $quantidadeCarrinho = ($carrinho->quantidadeProdutoCarrinho() != "") ? $carrinho
     </div>
 </div>
 
-<?php var_dump($_SESSION)?>
+<?php //var_dump($_SESSION)?>
