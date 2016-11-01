@@ -39,7 +39,7 @@
 <?php
 $produto = new Produto();
 $carrinho = new Carrinho();
-//$carrinho->incluiProdutoSessao(1, 201);
+$carrinho->incluiProdutoSessao(1, 201);
 
 $carrinhoItens = $carrinho->produtosCarrinho();
 $quantidadeCarrinho = ($carrinho->quantidadeProdutoCarrinho() != "") ? $carrinho->quantidadeProdutoCarrinho() : 0;
@@ -101,11 +101,7 @@ $quantidadeCarrinho = ($carrinho->quantidadeProdutoCarrinho() != "") ? $carrinho
                     endforeach;
                 }
                 if ($quantidadeCarrinho > 0) : ?>
-                    <li class="show-cart">
-                        <a href="<?php echo SITE_URL; ?>/carrinho">
-                            Ir para o carrinho
-                        </a>
-                    </li>
+                    <li class="show-cart">Ir para o carrinho</li>
                 <?php
                 else: ?>
                     <li class="empty">Não existe produtos no carrinho</li>
@@ -131,5 +127,3 @@ $quantidadeCarrinho = ($carrinho->quantidadeProdutoCarrinho() != "") ? $carrinho
         </div>
     </div>
 </div>
-
-<?php //var_dump($_SESSION)?>

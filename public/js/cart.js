@@ -4,14 +4,13 @@
 
     $(document).ready(function () {
 
-        var base_site = "http://localhost/book-finder",
-            carrinho = [];
+        var base_site = "http://localhost/book-finder";
 
         $('.menu-cart .control').on('click', function () {
             removeItemCart($(this).closest('li'));
         });
 
-        function removeItemCart(element) {
+        function removeItemCart (element) {
 
             var badge = $('.badge.cart');
 
@@ -65,6 +64,7 @@
             });
 
 
+
         }
 
         $('.add-cart').on('click', function () {
@@ -75,13 +75,13 @@
             mathCart($(this));
         });
 
-        $('.amount-product input').on('keyup', function () {
+        $('.amount-product input').on('keyup',function () {
             var newValue = $(this).val().replace(/[^0-9]+/g, "");
             newValue = newValue ? newValue : 1;
             updateAmount($(this), newValue);
         });
 
-        function mathCart(element, add) {
+        function mathCart (element, add) {
             var amount = element.parent().find('.amount-product input');
             var newValue;
 
@@ -95,7 +95,7 @@
             updateAmount(amount, newValue);
         }
 
-        function updateAmount(element, value) {
+        function updateAmount (element, value){
             $.ajax({
                 url: base_site + "/ajax-cart",
                 method: "POST",
@@ -105,8 +105,9 @@
                     quantidade: value
                 },
                 success: function (valor) {
-                    $('.menu-cart .subtotal').text(valor);
+                    element.closest('.item-container').find('.subtotal').text(valor);
                     element.val(value);
+                    totalCompra();
                 },
                 error: function () {
                     snack({
@@ -148,13 +149,14 @@
 
 
         function totalCompra() {
-
             var totalProduto = 0;
             $('.rs').each(function (index) {
                 var quantidadeProduto = parseInt($(this).parent().find('.quantidade').find('.numero').val());
                 //var quantidadeProduto = parseInt($(this).parent().find('.quantidade').find('.amount').find('.amount-product > input').val());
                 totalProduto += (parseInt($(this).text()) * quantidadeProduto);
             });
+
+            console.log(totalProduto);
             $('.total-do-produto span').text((totalProduto).formatMoney(2, ',', '.'));
             var descontos = parseInt($('.descontos span').text());
             var totalCompra = parseInt(totalProduto + descontos).formatMoney(2, ',', '.');
@@ -165,7 +167,14 @@
 
     /* função converte numero para R$ */
     Number.prototype.formatMoney = function(c, d, t){
-        var n = this, c = isNaN(c = Math.abs(c)) ? 2 : c, d = d == undefined ? "," : d, t = t == undefined ? "." : t, s = n < 0 ? "-" : "", i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "", j = (j = i.length) > 3 ? j % 3 : 0;
+        var j;
+        var n = this,
+            c = isNaN(c = Math.abs(c)) ? 2 : c,
+            d = d == undefined ? "," : d,
+            t = t == undefined ? "." : t,
+            s = n < 0 ? "-" : "",
+            i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "",
+            j = (j = i.length) > 3 ? j % 3 : 0;
         return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
-    };
+    }
 })();
