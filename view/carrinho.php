@@ -58,7 +58,7 @@ include_once "header.php";
                                 </button>
                             </div>
                         </li>
-                        <li class="valor rs">
+                        <li class="valor rs" data-valor="<?php echo $infoProduto->valor?>">
                             <?php echo 'R$ ' . number_format($infoProduto->valor, 2, ',', '.') ?>
                         </li>
                     </ul>

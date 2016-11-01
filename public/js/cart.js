@@ -144,10 +144,9 @@
             var totalProduto = 0;
             $('.rs').each(function (index) {
                 var quantidadeProduto = parseInt($(this).parent().find('.quantidade').find('.numero').val());
-                totalProduto += (parseInt($(this).text()) * quantidadeProduto);
+                totalProduto += (parseInt($(this).data('valor')) * quantidadeProduto);
             });
 
-            console.log(totalProduto);
             $('.total-do-produto span').text((totalProduto).formatMoney(2, ',', '.'));
             var descontos = parseInt($('.descontos span').text());
             var totalCompra = parseInt(totalProduto + descontos).formatMoney(2, ',', '.');
