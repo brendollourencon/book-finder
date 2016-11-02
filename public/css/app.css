@@ -81,6 +81,11 @@ body {
     font-family: 'Roboto Medium', sans-serif;
     transition: all 200ms ease-in-out;
     text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 13px;
 }
 
 .btn.raised {

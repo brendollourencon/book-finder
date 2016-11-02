@@ -6,9 +6,95 @@
 
         var base_site = "http://localhost/book-finder";
 
-        $('.menu-cart .control').on('click', function () {
+        $(document).on('click', '.menu-cart .control', function () {
             removeItemCart($(this).closest('li'));
         });
+
+        $(document).on('click', '.add-produto-cart', function () {
+            insertItemCart($(this));
+        });
+
+        function insertItemCart (element) {
+            var badge = $('.badge.cart');
+
+            $.ajax({
+                url: base_site + '/ajax-cart',
+                method: 'POST',
+                data: {
+                    id: element.data('id'),
+                    valor: element.data('valor'),
+                    acao: 'inserir'
+                },
+                success: function (res) {
+                    res = JSON.parse(res);
+                    console.log(res);
+                    var produto = res.produto;
+                    if (res.status) {
+                        var template = '' +
+                            '<li class="item" data-id="' + produto.id_produto +'">' +
+                            '   <div class="item-container">' +
+                            '       <div class="image" style="background-image: url(public/imagens/card.jpg)"></div>' +
+                            '       <div class="name">' +
+                            '           <div>' + produto.titulo + '</div>' +
+                            '           <div class="secondary">Código: '+ produto.id_produto +'</div>' +
+                            '       </div>' +
+                            '       <div class="amount">' +
+                            '           <button class="icon btn-icon red small remove-cart">' +
+                            '               <i class="material-icons">remove</i>' +
+                            '           </button>' +
+                            '           <div class="amount-product">' +
+                            '               <input type="text" value="1" data-val="1">' +
+                            '           </div>' +
+                            '           <button class="icon btn-icon blue small add-cart">' +
+                            '               <i class="material-icons">add</i>' +
+                            '           </button>' +
+                            '       </div>' +
+                            '       <div class="subtotal" data-subtotal="'+ produto.valor +'">R$'+ produto.valor.replace('.', ',') +'</div>' +
+                            '       <div class="control">' +
+                            '           <button class="icon btn-icon red small">' +
+                            '               <i class="material-icons">close</i>' +
+                            '           </button>' +
+                            '       </div>' +
+                            '   </div>' +
+                            '</li>';
+                        $('.menu.menu-cart').prepend(template);
+                        $('.menu-cart .show-cart').css('display', 'flex');
+                        $('.menu-cart .empty').hide();
+                        badge.data('value', badge.data('value') + 1);
+                        badge.text(badge.data('value'));
+                        snack({
+                            text: 'Produto inserido no carrinho',
+                            control: {
+                                action: 'hide',
+                                icon: 'close'
+                            },
+                            delay: 3000
+                        });
+                    }
+                    else {
+                        snack({
+                            text: 'Este produto já existe no carrinho',
+                            control: {
+                                action: 'hide',
+                                icon: 'close'
+                            },
+                            delay: 3000
+                        });
+                    }
+
+                },
+                error: function () {
+                    snack({
+                        text: 'Ocorreu um erro ao inserir o produto',
+                        control: {
+                            action: 'hide',
+                            icon: 'close'
+                        },
+                        delay: 3000
+                    });
+                }
+            });
+        }
 
         function removeItemCart (element) {
 
@@ -28,12 +114,13 @@
                     element.addClass('leave');
 
                     setTimeout(function () {
-                        if ($('.menu-cart .item').length - 1 > 0)
+                        if ($('.menu-cart .item').length - 1 > 0) {
                             element.children().remove();
+                        }
                         else {
                             $('.menu-container').removeClass('active');
-                            $('.menu-cart .show-cart').remove();
-                            $('.menu-cart').append('<li class="empty">Não existe produtos no carrinho</li>');
+                            $('.menu-cart .show-cart').hide();
+                            $('.menu-cart .empty').css('display', 'flex');
                         }
                         element.css('min-height', 0);
 
@@ -62,20 +149,17 @@
                     });
                 }
             });
-
-
-
         }
 
-        $('.add-cart').on('click', function () {
+        $(document).on('click', '.add-cart', function () {
             mathCart($(this), true);
         });
 
-        $('.remove-cart').on('click', function () {
+        $(document).on('click', '.remove-cart', function () {
             mathCart($(this));
         });
 
-        $('.amount-product input').on('keyup',function () {
+        $(document).on('keyup', '.amount-product input', function () {
             var newValue = $(this).val().replace(/[^0-9]+/g, "");
             newValue = newValue ? newValue : 1;
             updateAmount($(this), newValue);
@@ -138,7 +222,6 @@
         $("#container-carrinho .produto .quantidade .numero").on("change", function () {
             totalCompra();
         });
-
 
         function totalCompra() {
             var totalProduto = 0;

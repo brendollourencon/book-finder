@@ -18,23 +18,22 @@ class Carrinho extends CarrinhoModel
      * inclui o produto na sessão do carrinho
      * @author Brendol L. Oliveira
      */
-    public function incluiProdutoSessao($idProduto,$valorProduto)
+    public function incluiProdutoSessao($idProduto, $valorProduto)
     {
-//        session_start();
         $carrinhoTemp = ['id' => $idProduto, 'quantidade' => 1, 'valor' => $valorProduto];
         if (empty($_SESSION['carrinho'])) {
             $_SESSION['carrinho'] = array();
         }
-        //print_r($_SESSION['carrinho']);
-        $verificaChave = true;
         for ($i = 0; $i < count($_SESSION['carrinho']); $i++) {
             if ($_SESSION['carrinho'][$i]['id'] == $idProduto) {
-                $verificaChave = false;
+                return false;
             }
         }
-        if ($verificaChave) {
-            array_push($_SESSION['carrinho'], $carrinhoTemp);
-        }
+
+        array_push($_SESSION['carrinho'], $carrinhoTemp);
+
+        return true;
+
     }
     /*
      * Quantidade de produtos no carrinho
