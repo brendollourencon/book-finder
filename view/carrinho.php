@@ -24,7 +24,9 @@ include_once "header.php";
         if ($info->quantidadeProdutoCarrinho() >= 1) {
             ?>
             <h1 class="title">Produtos no carrinho</h1>
-            <form action="<?php echo SITE_URL; ?>/finalizar" method="post">
+            <form action="<?php echo SITE_URL; ?>/pedido-finalizado" method="post">
+                <input type="text" name="total-compra" id="total-compra">
+
                 <ul class="produto title">
                     <li class="img">
                         Imagem do produto
@@ -34,7 +36,6 @@ include_once "header.php";
                     <li class="valor">Valor do produto</li>
                 </ul>
                 <?php
-                //var_dump($produtosCarrinho);
                 foreach ($produtosCarrinho as $produto) {
                     $valorTotal = 0;
                     $infoProduto = $info->getInfomacaoPorId($produto['id']);
@@ -71,7 +72,7 @@ include_once "header.php";
                         <h2 class="title">Frete do cliente</h2>
                         <div class="inputs">
                             <div class="input-container">
-                                <input type="text" class="control numero-cep">
+                                <input type="text" class="control numero-cep" required="">
                                 <label for="">CEP</label>
                                 <div class="line"></div>
                             </div>

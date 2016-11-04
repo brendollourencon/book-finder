@@ -234,6 +234,7 @@
             var descontos = parseInt($('.descontos span').text());
             var totalCompra = parseInt(totalProduto + descontos).formatMoney(2, ',', '.');
             $('.total-da-compra span').text(totalCompra);
+            $('#total-compra').val(totalCompra.replace(",",""));
         }
 
     });
