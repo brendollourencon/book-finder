@@ -1,11 +1,15 @@
 <?php
 
+$css = ['produto'];
+$js = ['produto'];
+
 $produto = new Produto();
 $infoProduto = $produto->getProdutoPorId($idProduto);
 $title =  $infoProduto->meta_titulo;
 include_once "header.php";
 ?>
-    <br><br><br><br><br><br>
+
+<div class="menu-offset">
     pagina de produto
     <br>
     <br>
@@ -18,5 +22,6 @@ include_once "header.php";
         <br>
         <button type="submit">Comprar</button>
     </form>
+</div>
 
 <?php include_once "footer.php"; ?>

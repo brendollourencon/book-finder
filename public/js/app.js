@@ -4,22 +4,6 @@
 
     $(document).ready(function () {
 
-        var base_site = "http://localhost/book-finder";
-
-        // ajax teste
-
-        $("#login").on("submit", function (event) {
-            event.preventDefault();
-            $.ajax({
-                url: base_site + "/ajax-auth",
-                method: "POST",
-                data: {ajax: $("#ajax").val(), email: $("#email").val(), senha: $("#senha").val()},
-                success: function (data) {
-                    console.log(data);
-                }
-            });
-        });
-
         // Snack teste
         $('#snack-test').on('click', function () {
             snack({

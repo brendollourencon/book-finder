@@ -28,7 +28,7 @@
     if (isset($js) && !empty($js)) {
         foreach ($js as $script) {
             ?>
-            <script src="<?php SITE_JS . '/' . $script . '.js'; ?>"></script>
+            <script src="<?php echo SITE_JS . '/' . $script . '.js'; ?>"></script>
             <?php
         }
     }

@@ -3,7 +3,6 @@
 $title = "A livraria de todos";
 
 $css = ['vitrine'];
-//$js = ['scri', 'scri2'];
 
 $products = new Produto();
 $allProduct = $products->getVitrine();

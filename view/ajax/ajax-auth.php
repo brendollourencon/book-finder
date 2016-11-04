@@ -1,2 +1,3 @@
 <?php
-$obj = new Auth(true);
+$obj = new Auth();
+$obj->verifyAuth($_POST['email'], $_POST['senha']);
