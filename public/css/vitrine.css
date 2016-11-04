@@ -1,0 +1,40 @@
+.vitrine {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.card-vitrine {
+    width: 25%;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-vitrine .card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@media (max-width: 1024px) {
+    .card-vitrine {
+        width: 33.33333%;
+    }
+}
+
+@media (max-width: 640px) {
+    .card-vitrine {
+        width: 50%;
+    }
+}
+
+@media (max-width: 500px) {
+    .card-vitrine {
+        width: 100%;
+    }
+}
