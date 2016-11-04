@@ -15,3 +15,10 @@ function urlAmigavel($url){
     $url = strtolower($url);
     return $url;
 }
+
+
+function formataDataBanco($data){
+
+
+
+}

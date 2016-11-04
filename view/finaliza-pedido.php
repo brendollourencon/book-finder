@@ -1,3 +1,4 @@
 <?php
 
-var_dump($_POST);
+$pedido = new Pedido();
+echo $pedido->teste(123,"çççççççççççççç");
