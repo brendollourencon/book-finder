@@ -55,7 +55,7 @@ h1.title{text-align: center; font-family: 'Roboto', sans-serif; font-size: 20px;
     #container-carrinho .produto .descricao,
     #container-carrinho .produto .quantidade,
     #container-carrinho .produto .valor
-    {width: 100%;}
+    {width: 100%; padding: 10px 0}
     #container-carrinho ul.produto{
         -webkit-flex-direction: column; /* Safari */
         flex-direction: column;
