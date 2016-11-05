@@ -11,7 +11,7 @@ include_once "header.php";
 
 <div class="menu-offset">
     <div class="container-produto">
-        <h1>Informações do Livro</h1>
+        <h1>Informações do Livro(s)</h1>
 
         <div class="info-produto">
             <div class="image">
