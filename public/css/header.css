@@ -79,9 +79,9 @@
     margin-left: 9px;
     }
 
-.menu-cart .show-cart {
+.menu-cart .show-cart a{
     justify-content: center;
-    color: #1E88E5;
+    color: #1E88E5 !important;
 }
 
 .menu-cart .empty {

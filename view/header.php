@@ -100,7 +100,9 @@ $quantidadeCarrinho = ($carrinho->quantidadeProdutoCarrinho() != "") ? $carrinho
                     endforeach;
                 } ?>
 
-                <li class="show-cart" style="display: <?php echo $quantidadeCarrinho > 0 ? 'flex' : 'none'?>">Ir para o carrinho</li>
+                <li class="show-cart" style="display: <?php echo $quantidadeCarrinho > 0 ? 'flex' : 'none'?>">
+                    <a href="<?php echo SITE_URL . '/carrinho'?>">Ir para o carrinho</a>
+                </li>
                 <li class="empty" style="display: <?php echo $quantidadeCarrinho > 0 ? 'none' : 'flex'?>">Não existe produtos no carrinho</li>
             </ul>
             <div class="menu-btn">
