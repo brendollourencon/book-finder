@@ -1,4 +1,3 @@
-
 @font-face {
     font-family: 'Roboto';
     font-style: normal;
@@ -39,7 +38,6 @@
 *, *::before, *::after {
     box-sizing: border-box;
 }
-
 
 body {
     background-color: #EEE;
@@ -256,6 +254,15 @@ a {
 
 .btn-icon.fab.blue:hover, .btn-icon.fab.blue:focus {
     background-color: #1976d2;
+}
+
+.btn-icon.fab.success {
+    color: #FFF;
+    background-color: #4CAF50;
+}
+
+.btn-icon.fab.success:hover, .btn-icon.fab.success:focus {
+    background-color: #43a047;
 }
 
 .toolbar {

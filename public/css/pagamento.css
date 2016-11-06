@@ -1,0 +1,118 @@
+.pedido-finalizado {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10px;
+}
+
+.pedido {
+    max-width: 290px;
+    width: 100%;
+}
+
+.pedido .card {
+    width: 100%;
+}
+
+.pedido .card .card-content {
+    padding-bottom: 20px;
+}
+
+.pedido .card .card-content ul {
+    list-style: none;
+}
+
+.pedido .card .card-content span {
+    font-family: 'Roboto Medium', sans-serif;
+}
+
+.pagamento {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+.pagamento .card {
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.pagamento .card:first-child {
+    margin-left: 0;
+}
+
+.pagamento .card:last-child {
+    margin-right: 0;
+}
+
+.pagamento .card-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.dialog {
+    background-color: rgba(0,0,0,.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 4;
+    display: none;
+    opacity: 0;
+    transition: all 200ms ease-in-out;
+}
+
+.dialog.active {
+    opacity: 1;
+}
+
+.dialog .dialog-background-click {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.dialog-wrap {
+    width: 100%;
+    margin: auto;
+    max-width: 500px;
+    padding: 0 30px;
+    transition: all 200ms 200ms ease-in-out;
+    opacity: 0;
+    transform: scale(0);
+}
+
+.dialog .dialog-wrap.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.dialog .card-header {
+    background-color: #1976D2;
+    padding: 24px 16px;
+}
+
+.dialog .card-header .title {
+    color: #FFF;
+}
+
+.dialog .confirma {
+    position: relative;
+}
+
+.dialog .btn-confirma {
+    position: absolute;
+    right: -28px;
+    bottom: -28px;
+}
+
+.dialog .nome-cartao {
+    margin-right: 40px;
+}
