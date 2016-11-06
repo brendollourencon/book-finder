@@ -9,10 +9,9 @@ $rotas = [
     "testes" => "testes",
     "finaliza-pedido" => "pedido-finalizado",
     "exemplos" => "exemplos",
-    "finaliza-pedido" => "pedido-finalizado",
-
     "login" => "login",
     //url de ajax
     '/ajax/ajax-auth' => 'ajax-auth',
+    '/ajax/ajax-logoff' => 'ajax-logoff',
     '/ajax/ajax-cart' => 'ajax-cart',
 ];

@@ -15,30 +15,30 @@ include_once "header.php";
         
         <div class="login card">
             <div class="close">
-                <button class="btn-icon blue">
+                <a href="<?php echo SITE_URL?>" class="btn-icon blue">
                     <i class="material-icons">clear</i>
-                </button>
+                </a>
             </div>
 
             <div class="header">
-                <div class="title">BookFinder</div>
+                <div class="title">Book Finder</div>
             </div>
 
-            <div class="content">
+            <form id="login" class="content">
                 <div class="input-container">
-                    <input type="text" id="email" class="control"/>
+                    <input type="text" id="email" class="control" required/>
                     <label for="email">Email</label>
                     <div class="line"></div>
                 </div>
                 <div class="input-container">
-                    <input type="password" id="senha" class="control"/>
+                    <input type="password" id="senha" class="control" required/>
                     <label for="senha">Senha</label>
                     <div class="line"></div>
                 </div>
                 <div class="action">
-                    <button id="login" class="btn raised blue large test">Entrar</button>
+                    <button type="submit" class="btn raised blue large test">Entrar</button>
                 </div>
-            </div>
+            </form>
 
         </div>
     </div>

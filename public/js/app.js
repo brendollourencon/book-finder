@@ -4,6 +4,8 @@
 
     $(document).ready(function () {
 
+        var base_site = "http://localhost/book-finder";
+
         // Snack teste
         $('#snack-test').on('click', function () {
             snack({
@@ -44,6 +46,15 @@
 
         });
 
+        $('input[required]').keyup(function () {
+            var input = $(this);
+            var container = input.parent();
+            if (!input.val())
+                container.addClass('error').append('<div class="message">Este campo é obrigatório</div>');
+            else
+                container.removeClass('error').find('.message').remove();
+        });
+
         $('.open-search').on('click', function () {
             var search = $(this).parent().parent().find('.search');
 
@@ -62,6 +73,28 @@
             setTimeout(function () {
                 search.removeClass('active leave');
             }, 200);
+        });
+
+        $('#logoff').on('click', function () {
+            var item = $(this);
+            $.ajax({
+                url: base_site + '/ajax-logoff',
+                method: 'GET',
+                success: function () {
+                    $('.background-click').click();
+                    $('.menu-btn.user').html('').append('<div class="material-icons">person</div>');
+                    item.parent().append('<li><a href="' + base_site + "/login" +'">Entrar</a></li>');
+                    item.remove();
+                    snack({
+                        text: 'Logoff efetuado com sucesso',
+                        control: {
+                            action: 'hide',
+                            icon: 'close'
+                        },
+                        delay: 5000
+                    });
+                }
+            });
         });
     });
 })();
