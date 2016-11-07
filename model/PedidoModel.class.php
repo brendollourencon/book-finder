@@ -73,5 +73,4 @@ class PedidoModel extends Model
         }
         Db::closeConnection();
     }
-
 }

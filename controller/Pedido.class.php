@@ -32,5 +32,4 @@ class Pedido extends PedidoModel{
         $this->setNome($nome);
         return parent::testea();
     }
-
 }
