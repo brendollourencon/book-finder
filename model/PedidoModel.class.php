@@ -4,23 +4,23 @@
 class PedidoModel extends Model
 {
 
-    protected $data_hora;
-    protected $id_cliente;
-    protected $data_entrega;
-    protected $tipo_pagamento;
-    protected $valor_total;
+    protected $datahora;
+    protected $cpfcliente;
+    protected $dataentrega;
+    protected $tipopagamento;
+    protected $valortotal;
     protected $status;
 
     // itens pedido
-    protected $id_produto;
+    protected $idproduto;
     protected $quantidade;
     protected $valor;
 
     // cartao
     protected $numero;
     protected $nome;
-    protected $codigo_seguranca;
-    protected $data_validade;
+    protected $codigoseguranca;
+    protected $datavalidade;
 
     // tabela padrão
     private $table = "pedidos";
@@ -33,19 +33,18 @@ class PedidoModel extends Model
     public function novoPedido()
     {
 
-        $sql = "INSERT INTO " . $this->table . " (data_hora,id_cliente,data_entrega,tipo_pagamento,valor_total,status) 
+        $sql = "INSERT INTO " . $this->table . " (data_hora,cpf_cliente,data_entrega,tipo_pagamento,valor_total,status) 
          VALUES (?,?,?,?,?,?)";
-
         $queryPedido = Db::exec()->prepare($sql);
         $queryPedido->bindValue(1, $this->getDataHora());
-        $queryPedido->bindValue(2, $this->getIdCliente());
+        $queryPedido->bindValue(2, $this->getCpfCliente());
         $queryPedido->bindValue(3, $this->getDataEntrega());
         $queryPedido->bindValue(4, $this->getTipoPagamento());
-        $queryPedido->bindValue(5, $this->ValorTotal());
+        $queryPedido->bindValue(5, $this->getValorTotal());
         $queryPedido->bindValue(6, "A");
         $queryPedido->execute();
 
-        $lastId = Db::exec()->lastInsertId();
+        $lastId = Db::ultimoId();
 
         $carrinho = new Carrinho();
         $produtosCarrinho = $carrinho->produtosCarrinho();
@@ -57,12 +56,12 @@ class PedidoModel extends Model
             $queryItensPedido = Db::exec()->prepare($sqlItensPedido);
             $queryItensPedido->bindValue(1, $lastId);
             $queryItensPedido->bindValue(2, $produto['id']);
-            $queryItensPedido->bindValue(2, $produto['quantidade']);
-            $queryItensPedido->bindValue(3, $produto['valor']);
+            $queryItensPedido->bindValue(3, $produto['quantidade']);
+            $queryItensPedido->bindValue(4, (float)$produto['valor']);
             $queryItensPedido->execute();
         }
 
-        if($this->getTipo() == "cartao"){
+        if($this->getTipoPagamento() == "cartao"){
             $sqlCartao = "INSERT INTO cartoes (numero,nome,codigo_seguranca,data_validade) 
                       VALUES (?,?,?,?)";
             $queryCartao = Db::exec()->prepare($sqlCartao);
@@ -73,11 +72,6 @@ class PedidoModel extends Model
             $queryCartao->execute();
         }
         Db::closeConnection();
-    }
-
-
-    public function testea(){
-        return $this->getNome();
     }
 
 }
