@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: livraria
 -- ------------------------------------------------------
--- Server version	5.7.16-0ubuntu0.16.04.1
+-- Server version	5.7.15-0ubuntu0.16.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -26,7 +26,7 @@ CREATE TABLE `cartoes` (
   `numero` int(16) NOT NULL,
   `nome` varchar(45) NOT NULL,
   `codigo_seguranca` int(3) NOT NULL,
-  `data_validade` varchar(6) NOT NULL,
+  `data_validade` varchar(4) NOT NULL,
   PRIMARY KEY (`numero`),
   UNIQUE KEY `numero_UNIQUE` (`numero`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -38,7 +38,6 @@ CREATE TABLE `cartoes` (
 
 LOCK TABLES `cartoes` WRITE;
 /*!40000 ALTER TABLE `cartoes` DISABLE KEYS */;
-INSERT INTO `cartoes` VALUES (123,'Brendol L. Oliveria',123,'05/19');
 /*!40000 ALTER TABLE `cartoes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -71,7 +70,6 @@ CREATE TABLE `clientes` (
 
 LOCK TABLES `clientes` WRITE;
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-INSERT INTO `clientes` VALUES (11111111,402586958,'Brendol','123',123,'Mãe','brendol.lourencon@gmail.com','123','','A');
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -185,7 +183,7 @@ CREATE TABLE `itens_pedidos` (
   KEY `fk_id_produto_idx` (`id_produto`),
   CONSTRAINT `id_pedido` FOREIGN KEY (`id_pedido`) REFERENCES `pedidos` (`id_pedido`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `id_produto` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`id_produto`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -194,7 +192,6 @@ CREATE TABLE `itens_pedidos` (
 
 LOCK TABLES `itens_pedidos` WRITE;
 /*!40000 ALTER TABLE `itens_pedidos` DISABLE KEYS */;
-INSERT INTO `itens_pedidos` VALUES (5,67,2,1,150.00),(6,68,2,1,150.00);
 /*!40000 ALTER TABLE `itens_pedidos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -260,15 +257,14 @@ DROP TABLE IF EXISTS `pedidos`;
 CREATE TABLE `pedidos` (
   `id_pedido` int(11) NOT NULL AUTO_INCREMENT,
   `data_hora` datetime NOT NULL,
-  `cpf_cliente` int(11) NOT NULL,
+  `id_cliente` int(11) NOT NULL,
   `data_entrega` datetime NOT NULL,
   `tipo_pagamento` varchar(45) NOT NULL,
-  `valor_total` decimal(6,2) NOT NULL,
   `status` char(2) NOT NULL COMMENT 'P=Pendente\nPG=Pago\nC=Cancelado',
   PRIMARY KEY (`id_pedido`),
-  KEY `fk_cpf_cliente_idx` (`cpf_cliente`),
-  CONSTRAINT `fk_cpf_cliente` FOREIGN KEY (`cpf_cliente`) REFERENCES `clientes` (`cpf`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=latin1;
+  KEY `fk_id_cliente_idx` (`id_cliente`),
+  CONSTRAINT `fk_id_cliente` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`cpf`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -277,7 +273,6 @@ CREATE TABLE `pedidos` (
 
 LOCK TABLES `pedidos` WRITE;
 /*!40000 ALTER TABLE `pedidos` DISABLE KEYS */;
-INSERT INTO `pedidos` VALUES (67,'2016-11-05 06:11:21',11111111,'2016-11-08 00:00:00','cartao',900.00,'A'),(68,'2016-11-05 06:11:28',11111111,'2016-11-08 00:00:00','cartao',900.00,'A');
 /*!40000 ALTER TABLE `pedidos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -297,7 +292,7 @@ CREATE TABLE `produtos` (
   `meta_descricao` varchar(170) DEFAULT NULL,
   `status` char(1) NOT NULL,
   PRIMARY KEY (`id_produto`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -306,7 +301,6 @@ CREATE TABLE `produtos` (
 
 LOCK TABLES `produtos` WRITE;
 /*!40000 ALTER TABLE `produtos` DISABLE KEYS */;
-INSERT INTO `produtos` VALUES (1,100.00,'Produto de teste','descrição de teste','meta titulo de teste','meta descrição de teste','A'),(2,150.00,'Harry Pother','Livro do Harry','Livro do Harry','Teste','A');
 /*!40000 ALTER TABLE `produtos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -347,4 +341,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-07 19:30:28
+-- Dump completed on 2016-09-30 19:24:41
