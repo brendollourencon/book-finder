@@ -1,4 +1,3 @@
-
 @font-face {
     font-family: 'Roboto';
     font-style: normal;
@@ -40,11 +39,19 @@
     box-sizing: border-box;
 }
 
-
 body {
     background-color: #EEE;
 }
-.container{clear: both;content: ' '}
+
+a {
+    text-decoration: none;
+}
+
+.container{
+    clear: both;
+    content: ' '
+}
+
 .material-icons {
     font-family: 'Material Icons', sans-serif;
     font-weight: normal;
@@ -153,6 +160,8 @@ body {
     position: relative;
     background-color: transparent;
     transition: all 200ms ease-in-out;
+    outline: none;
+    text-decoration: none;
 }
 
 .btn-icon.small {
@@ -245,6 +254,15 @@ body {
 
 .btn-icon.fab.blue:hover, .btn-icon.fab.blue:focus {
     background-color: #1976d2;
+}
+
+.btn-icon.fab.success {
+    color: #FFF;
+    background-color: #4CAF50;
+}
+
+.btn-icon.fab.success:hover, .btn-icon.fab.success:focus {
+    background-color: #43a047;
 }
 
 .toolbar {
@@ -352,6 +370,14 @@ body {
     opacity: 0;
 }
 
+.menu-container .menu > li a {
+    color: rgba(0,0,0,.8);
+    display: flex;
+    width: 100%;
+    min-height: 48px;
+    align-items: center;
+}
+
 .menu-container.active .menu > li {
     transform: translateY(0);
     opacity: 1;
@@ -433,8 +459,15 @@ body {
     border-color: #F44336;
 }
 
+.input-container.error .message {
+    font-size: 12px;
+    position: absolute;
+    margin-top: 2px;
+}
+
 .input-container.error label,
 .input-container.error label.keep-float,
+.input-container.error .message,
 .input-container.error .control:focus ~ label {
     color: #F44336;
 }

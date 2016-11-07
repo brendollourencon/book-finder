@@ -43,7 +43,6 @@ $carrinho = new Carrinho();
 
 $carrinhoItens = $carrinho->produtosCarrinho();
 $quantidadeCarrinho = ($carrinho->quantidadeProdutoCarrinho() != "") ? $carrinho->quantidadeProdutoCarrinho() : 0;
-
 ?>
 
 <div class="toolbar header">
@@ -101,7 +100,9 @@ $quantidadeCarrinho = ($carrinho->quantidadeProdutoCarrinho() != "") ? $carrinho
                     endforeach;
                 } ?>
 
-                <li class="show-cart" style="display: <?php echo $quantidadeCarrinho > 0 ? 'flex' : 'none'?>">Ir para o carrinho</li>
+                <li class="show-cart" style="display: <?php echo $quantidadeCarrinho > 0 ? 'flex' : 'none'?>">
+                    <a href="<?php echo SITE_URL . '/carrinho'?>">Ir para o carrinho</a>
+                </li>
                 <li class="empty" style="display: <?php echo $quantidadeCarrinho > 0 ? 'none' : 'flex'?>">Não existe produtos no carrinho</li>
             </ul>
             <div class="menu-btn">
@@ -114,12 +115,33 @@ $quantidadeCarrinho = ($carrinho->quantidadeProdutoCarrinho() != "") ? $carrinho
 
         <div class="menu-container">
             <ul class="menu">
-                <li>Perfil</li>
-                <li>Sair</li>
+                <?php
+                if (isset($_SESSION['Auth'])) {
+                ?>
+                    <li id="logoff">Sair</li>
+                <?php
+                }
+                else {
+                ?>
+                    <li><a href="<?php echo SITE_URL . '/login'?>">Entrar</a></li>
+                <?php
+                }
+                ?>
             </ul>
-            <div class="menu-btn user">
-                C
-            </div>
+            <?php
+            if (isset($_SESSION['Auth'])) {?>
+                <div class="menu-btn user">
+                    <?php echo substr($_SESSION['Auth']['name'], 0,1)?>
+                </div>
+            <?php
+            }
+            else { ?>
+                <div class="menu-btn user">
+                    <i class="material-icons">person</i>
+                </div>
+            <?php
+            }
+            ?>
         </div>
     </div>
 </div>

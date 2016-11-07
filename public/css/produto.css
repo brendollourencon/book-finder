@@ -1,0 +1,72 @@
+.img {
+    max-width: 100%;
+}
+.container-produto {
+    display: flex;
+    width: 40%;
+    position: relative;
+    top: 20px;
+    left: 30%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3), 0 2px 6px rgba(0,0,0,0.15);
+    padding: 20px 20px;
+    background-color: #FFF;
+    border-radius: 5px;
+}
+.container-produto h1 {
+    text-transform: capitalize;
+    font-weight: 500;
+}
+.container-produto .info-produto {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    margin-top: 30px;
+}
+.container-produto .info-produto .image {
+    width: 45%;
+    height: 400px;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #C6C6C6;
+}
+.container-produto .info-produto .info {
+    width: 55%;
+    height: 400px;
+    position: absolute;
+    right: 0;
+
+    text-align: center;
+}
+.container-produto .info-produto .info .book-title {
+    font-size: 22px;
+}
+.container-produto .info-produto .info .book-description {
+    padding: 10px 20px;
+    margin-top: 30px;
+    font-size: 18px;
+}
+.container-produto .info-produto .info .book-value {
+    padding: 10px 20px;
+    margin-top: 30px;
+    font-size: 18px;
+}
+.bold {
+    font-weight: bold;
+}
+.container-produto .info-produto .info .action {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+}
+.container-produto .info-produto .info .action button {
+    width: 80%;
+    height: 35px;
+}

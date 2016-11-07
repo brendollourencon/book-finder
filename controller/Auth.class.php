@@ -12,13 +12,35 @@ class Auth extends AuthModel
 
     }
 
+    public function doAuth ($email, $senha)
+    {
+        $result = $this->verifyAuth($email, $senha);
+
+        if ($result) {
+            $encryption = base64_encode($result->cpf . '.' . $result->email);
+            $_SESSION['Auth']['encryption'] = $encryption;
+            $_SESSION['Auth']['name'] = $result->nome;
+            return true;
+        }
+        else {
+            $this->destroy();
+            return false;
+        }
+    }
+
     public function verifyAuth($email, $senha)
     {
         $this->setEmail($email);
         $this->setSenha($senha);
-        exit(var_dump($this->getSenha()));
-        //return parent::getAuth();
+        return parent::getAuth();
     }
 
+    public function isAuth () {
+        return isset($_SESSION['Auth']);
+    }
+
+    public function destroy () {
+        unset($_SESSION['Auth']);
+    }
 
 }
