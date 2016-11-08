@@ -29,11 +29,17 @@
                     res = JSON.parse(res);
                     console.log(res);
                     var produto = res.produto;
+                    var titulo = produto.titulo;
+
+                    var path = titulo.replace(/ /g,"-").toLowerCase();
+                    console.log(path);
+
+                    console.log(produto.titulo);
                     if (res.status) {
                         var template = '' +
                             '<li class="item" data-id="' + produto.id_produto +'">' +
                             '   <div class="item-container">' +
-                            '       <div class="image" style="background-image: url(public/imagens/card.jpg)"></div>' +
+                            '       <div class="image" style="background-image: url(' + base_site + '/public/imagens/' + path +'.jpg)"></div>' +
                             '       <div class="name">' +
                             '           <div>' + produto.titulo + '</div>' +
                             '           <div class="secondary">Código: '+ produto.id_produto +'</div>' +

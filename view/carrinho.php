@@ -25,8 +25,7 @@ include_once "header.php";
             ?>
             <h1 class="title">Produtos no carrinho</h1>
             <form action="<?php echo SITE_URL; ?>/pedido-finalizado" method="post">
-                <input type="text" name="total-compra" id="total-compra">
-
+                <input type="hidden" name="total-compra" id="total-compra">
                 <ul class="produto title">
                     <li class="img">
                         Imagem do produto
@@ -42,7 +41,7 @@ include_once "header.php";
                     ?>
                     <ul class="produto">
                         <li class="img">
-                            <img src="<?php echo SITE_IMAGENS; ?>/no-image.png" alt="">
+                            <img src="<?php echo SITE_IMAGENS.'/'.str_replace(' ', '-', strtolower($infoProduto->titulo)) ?>-vertical.jpg" alt="">
                         </li>
                         <li class="descricao"><?php echo $infoProduto->titulo ?></li>
                         <li data-id="<?php echo $produto['id'] ?>" class="quantidade">

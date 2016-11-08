@@ -50,7 +50,7 @@ include_once "header.php";
                 <div class="title">Detalhes do cartão</div>
             </div>
             <div class="card-content">
-                <input type="text" id="total-compra" data-value="<?php echo $total_pedido?>">
+                <input type="hidden" id="total-compra" data-value="<?php echo $total_pedido?>">
                 <div class="input-container">
                     <input type="text" id="numero" class="control" required/>
                     <label for="numero">Numero</label>
