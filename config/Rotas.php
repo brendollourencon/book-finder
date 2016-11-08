@@ -14,4 +14,5 @@ $rotas = [
     '/ajax/ajax-auth' => 'ajax-auth',
     '/ajax/ajax-logoff' => 'ajax-logoff',
     '/ajax/ajax-cart' => 'ajax-cart',
+    '/ajax/ajax-pagamento' => 'ajax-pagamento'
 ];

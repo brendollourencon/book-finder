@@ -1,46 +1,13 @@
 <?php
 
 
-class AuthModel
+class AuthModel extends Model
 {
 
     public $email;
     public $senha;
 
     private $table = "clientes";
-
-    /**
-     * @return mixed
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * @param mixed $email
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getSenha()
-    {
-        return $this->senha;
-    }
-
-    /**
-     * @param mixed $senha
-     */
-    public function setSenha($senha)
-    {
-        $this->senha = $senha;
-    }
-
 
     /*
      * metodo para verificação de login

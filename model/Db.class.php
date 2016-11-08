@@ -37,4 +37,12 @@ class Db extends Model
         self::$pdo = null;
     }
 
+    public static function lastId() {
+        if (self::$pdo === null) {
+            return self::exec()->lastInsertId();
+        }
+
+        return self::$pdo->lastInsertId();
+    }
+
 }

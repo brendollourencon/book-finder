@@ -35,6 +35,10 @@ class Auth extends AuthModel
         return parent::getAuth();
     }
 
+    public function getCPF () {
+        return explode('.', base64_decode($_SESSION['Auth']['encryption']))[0];
+    }
+
     public function isAuth () {
         return isset($_SESSION['Auth']);
     }
