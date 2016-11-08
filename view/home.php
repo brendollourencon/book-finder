@@ -18,14 +18,14 @@ include_once "header.php";
             <div class="card-vitrine">
                 <div class="card">
                     <div class="card-image">
-                        <img src="public/imagens/card.jpg" alt="">
+                        <img src="public/imagens/<?php echo str_replace(' ', '-', strtolower($product->titulo))?>.jpg" alt="">
                     </div>
                     <div class="card-header">
                         <div class="title"><?php echo $product->titulo?></div>
                         <div class="subtitle"><?php echo 'R$ ' . number_format($product->valor, 2, ',', '.')?></div>
                     </div>
                     <div class="card-content">
-                        <?php echo $product->descricao?>
+                        <p><?php echo substr($product->descricao, 0, 150); ?> </p>
                     </div>
                     <div class="card-controls">
                         <button class="btn-icon blue add-produto-cart" type="button" data-id="<?php echo $product->id_produto?>" data-valor="<?php echo $product->valor?>">
